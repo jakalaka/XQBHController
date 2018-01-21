@@ -1,8 +1,8 @@
 package XQBHController.FreeTest;
 
 import XQBHController.Controller.ControllerInit;
-import XQBHController.ControllerAPI.WarmingDialog;
-import XQBHController.ControllerTran.AlipayZFWAITQuery;
+import XQBHController.ControllerAPI.UI.WarmingDialog;
+import XQBHController.ControllerAPI.Com.AlipayZFWAITQuery;
 import XQBHController.ControllerUI.Order;
 
 public class querytest {

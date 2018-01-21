@@ -1,26 +1,11 @@
 package XQBHController.Controller;
 
 
-import XQBHController.Controller.Table.Mapper.CXTCSMapper;
-import XQBHController.Controller.Table.Model.CXTCS;
-import XQBHController.Controller.Table.Model.CXTCSKey;
-import XQBHController.Controller.Table.basic.DBAccess;
-import XQBHController.ControllerAPI.WarmingDialog;
-import XQBHController.ControllerUI.ControllerUIMain;
-import XQBHController.Utils.FinishComListener.FinishComListener;
+import XQBHController.ControllerAPI.UI.WarmingDialog;
 import XQBHController.Utils.QRReader.QRReader;
-import XQBHController.Utils.Updater.AutoUpdateMain;
-import XQBHController.Utils.XML.XmlUtils;
 import XQBHController.Utils.log.Logger;
-import org.apache.ibatis.exceptions.PersistenceException;
-import org.apache.ibatis.session.SqlSession;
 
 import java.io.*;
-import java.net.InetAddress;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.util.HashMap;
-import java.util.Map;
 
 import static XQBHController.Utils.PropertiesHandler.PropertiesReader.readKeyFromXML;
 

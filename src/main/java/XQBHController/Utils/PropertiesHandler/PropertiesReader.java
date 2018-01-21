@@ -1,6 +1,6 @@
 package XQBHController.Utils.PropertiesHandler;
 
-import XQBHController.ControllerAPI.WarmingDialog;
+import XQBHController.ControllerAPI.UI.WarmingDialog;
 import XQBHController.Utils.log.Logger;
 
 import java.io.File;

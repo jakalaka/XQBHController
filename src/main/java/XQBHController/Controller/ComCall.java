@@ -1,6 +1,6 @@
 package XQBHController.Controller;
 
-import XQBHController.ControllerAPI.WarmingDialog;
+import XQBHController.ControllerAPI.UI.WarmingDialog;
 
 
 import XQBHController.Utils.RSA.RSASignature;
@@ -134,32 +134,17 @@ public class ComCall {
         head.put("HTJYM_", HTJYM_); //后台交易码
         head.put("IP_UUU", Com.ControllerIP); //ip地址
 
-        if ((Com.sKHBH_U==null||"".equals(Com.sKHBH_U))&&(Com.sSHBH_U==null||"".equals(Com.sSHBH_U)))
-        {
-            //从交易数据中取
-            if (TranMapIn.get("KHBH_U")!=null&&!"".equals(TranMapIn.get("KHBH_U").toString()))
-            {
-                Com.sKHBH_U=TranMapIn.get("KHBH_U").toString();
-            }else if (TranMapIn.get("SHBH_U")!=null&&!"".equals(TranMapIn.get("SHBH_U").toString())){
-                Com.sSHBH_U=TranMapIn.get("SHBH_U").toString();
-            }
 
+        if ("SHLogin".equals(HTJYM_)) {
+            Com.sKHDLZH = "";
+            Com.sSHBH_U = TranMapIn.get("SHBH_U").toString();
+        } else if ("KHLogin".equals(HTJYM_)) {
+            Com.sSHBH_U = "";
+            Com.sKHDLZH = TranMapIn.get("KHDLZH").toString();
         }
-        if ("SHLogin".equals(HTJYM_))
-        {
-            Com.sKHBH_U="";
-            Com.sSHBH_U=TranMapIn.get("SHBH_U").toString();
-        }else if ("KHLogin".equals(HTJYM_))
-        {
-            Com.sSHBH_U="";
-            Com.sKHBH_U=TranMapIn.get("KHBH_U").toString();
-        }
-        if (Com.sSHBH_U==null||"".equals(Com.sSHBH_U))
-        {
-            head.put("KHBH_U",Com.sKHBH_U);
-        }else {
-            head.put("SHBH_U",Com.sSHBH_U);
-        }
+
+        head.put("KHDLZH", Com.sKHDLZH);
+        head.put("SHBH_U", Com.sSHBH_U);
 
         XMLMapIn.put("head", head);
         XMLMapIn.put("body", TranMapIn);

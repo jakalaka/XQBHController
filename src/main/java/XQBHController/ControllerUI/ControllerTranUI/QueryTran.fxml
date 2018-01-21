@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.collections.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane fx:id="root" minHeight="0.0" minWidth="0.0" stylesheets="@../../resources/CSS/stylesheet.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="XQBHController.ControllerUI.ControllerTranUI.QueryTran">
+   <children>
+      <GridPane gridLinesVisible="true" layoutX="68.0" layoutY="70.0" prefHeight="371.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <FlowPane>
+                     <children>
+                        <HBox fx:id="CXFS_U_I" styleClass="fieldHbox">
+                           <children>
+                              <Label styleClass="fieldLabel" text="查询方式" />
+                              <ComboBox prefWidth="150.0" value="支付宝单号">
+                                 <items>
+                                    <FXCollections fx:factory="observableArrayList">
+
+                                       <String fx:value="支付宝单号" />
+                                       <String fx:value="微信单号" />
+                                       <String fx:value="后台流水" />
+                                    </FXCollections>
+                                 </items>
+                              </ComboBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </FlowPane>
+                  <FlowPane prefHeight="79.0" prefWidth="800.0">
+                     <children>
+                        <HBox>
+                           <children>
+                              <AnchorPane>
+                                 <children>
+                                    <HBox fx:id="HTRQ_U_I" styleClass="fieldHbox" visible="false">
+                                       <children>
+                                          <Label styleClass="fieldLabel" text="后台日期" />
+                                          <DatePicker />
+                                       </children>
+                                    </HBox>
+                                    <HBox fx:id="WXDH_U_I" focusTraversable="true" styleClass="fieldHbox" visible="false">
+                                       <children>
+                                          <Label styleClass="fieldLabel" text="微信单号" />
+                                          <TextField />
+                                       </children>
+                                    </HBox>
+                                    <HBox fx:id="ZFBDDH_I" styleClass="fieldHbox">
+                                       <children>
+                                          <Label styleClass="fieldLabel" text="支付宝单号" />
+                                          <TextField />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </HBox>
+
+                        <HBox>
+                           <children>
+                              <AnchorPane>
+                                 <children>
+                                    <HBox fx:id="HTLS_U_I" styleClass="fieldHbox" visible="false">
+                                       <children>
+                                          <Label styleClass="fieldLabel" text="后台流水" />
+                                          <TextField />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </HBox>
+                     </children>
+                  </FlowPane>
+               </children>
+            </VBox>
+            <FlowPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+               <children>
+                  <HBox fx:id="HTRQ_U_O" styleClass="fieldHbox">
+                     <children>
+                        <Label styleClass="fieldLabel" text="后台日期" />
+                        <TextField />
+                     </children>
+                  </HBox>
+                  <HBox fx:id="HTSJ_U_O" styleClass="fieldHbox">
+                     <children>
+                        <Label styleClass="fieldLabel" text="后台时间" />
+                        <TextField />
+                     </children>
+                  </HBox>
+                  <HBox fx:id="HTLS_U_O" styleClass="fieldHbox">
+                     <children>
+                        <Label styleClass="fieldLabel" text="后台流水" />
+                        <TextField />
+                     </children>
+                  </HBox>
+                  <HBox fx:id="HTJYM__O" styleClass="fieldHbox">
+                     <children>
+                        <Label styleClass="fieldLabel" text="后台交易码" />
+                        <TextField />
+                     </children>
+                  </HBox>
+                  <HBox fx:id="ZFZHLX_O" styleClass="fieldHbox">
+                     <children>
+                        <Label styleClass="fieldLabel" text="支付类型" />
+                        <TextField />
+                     </children>
+                  </HBox>
+                  <HBox fx:id="JYJE_U_O" styleClass="fieldHbox">
+                     <children>
+                        <Label styleClass="fieldLabel" text="交易金额" />
+                        <TextField />
+                     </children>
+                  </HBox>
+                  <HBox fx:id="SFDH_U_O" styleClass="fieldHbox">
+                     <children>
+                        <Label styleClass="fieldLabel" text="第三方单号" />
+                        <TextField />
+                     </children>
+                  </HBox>
+                  <HBox fx:id="SHBH_U_O" styleClass="fieldHbox">
+                     <children>
+                        <Label styleClass="fieldLabel" text="商户编号" />
+                        <TextField />
+                     </children>
+                  </HBox>
+                  <HBox fx:id="CZZH_U_O" styleClass="fieldHbox">
+                     <children>
+                        <Label styleClass="fieldLabel" text="操作账号" />
+                        <TextField />
+                     </children>
+                  </HBox>
+                  <HBox fx:id="SPXX_U_O" styleClass="fieldHbox">
+                     <children>
+                        <Label styleClass="fieldLabel" text="商品信息" />
+                        <TextField />
+                     </children>
+                  </HBox>
+                  <HBox fx:id="FKM_UU_O" styleClass="fieldHbox">
+                     <children>
+                        <Label styleClass="fieldLabel" text="付款码" />
+                        <TextField />
+                     </children>
+                  </HBox>
+                  <HBox fx:id="JYZT_U_O" styleClass="fieldHbox">
+                     <children>
+                        <Label styleClass="fieldLabel" text="交易状态" />
+                        <TextField />
+                     </children>
+                  </HBox>
+                  <Button mnemonicParsing="false" text="退货" />
+               </children>
+            </FlowPane>
+         </children>
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="98.0" minHeight="75.0" prefHeight="98.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+      </GridPane>
+   </children>
+</AnchorPane>

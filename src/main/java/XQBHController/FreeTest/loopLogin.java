@@ -1,7 +1,7 @@
 package XQBHController.FreeTest;
 
 import XQBHController.Controller.ControllerInit;
-import XQBHController.ControllerTran.ZDLogin;
+import XQBHController.ControllerAPI.Com.ZDLogin;
 
 public class loopLogin {
     public static void main(String[] args) {

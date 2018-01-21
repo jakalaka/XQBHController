@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
+<?import javafx.collections.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
@@ -9,61 +11,52 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
+<?import javafx.collections.FXCollections?>
 
 <AnchorPane id="mainbgImg" minHeight="600.0" minWidth="800.0" onKeyPressed="#keyPressed" stylesheets="@../../resources/CSS/stylesheet.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="XQBHController.ControllerUI.Controller">
-   <children>
-      <GridPane styleClass="backGrid" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints maxHeight="100.0" minHeight="80.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="60.0" minHeight="40.0" vgrow="SOMETIMES" />
-          <RowConstraints vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="100.0" minHeight="80.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <HBox prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../resources/img/title_black.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </HBox>
-            <FlowPane prefHeight="200.0" prefWidth="200.0" styleClass="flowLayout" GridPane.columnSpan="2" GridPane.rowIndex="1">
-               <children>
-                  <HBox styleClass="functionHbox">
-                     <children>
-                        <Button mnemonicParsing="false" styleClass="functionButton" text="交易查询" />
-                     </children>
-                  </HBox>
-                  <HBox styleClass="functionHbox">
-                     <children>
-                        <Button mnemonicParsing="false" styleClass="functionButton" text="库存修改" />
-                     </children>
-                  </HBox>
-                  <HBox styleClass="functionHbox">
-                     <children>
-                        <Button mnemonicParsing="false" styleClass="functionButton" text="手工销售" />
-                     </children>
-                  </HBox>
-                  <HBox styleClass="functionHbox">
-                     <children>
-                        <Button mnemonicParsing="false" styleClass="functionButton" text="手工退货" />
-                     </children>
-                  </HBox>
-                  <HBox styleClass="functionHbox">
-                     <children>
-                        <Button mnemonicParsing="false" styleClass="functionButton" text="账单查询" />
-                     </children>
-                  </HBox>
-               </children>
-            </FlowPane>
-            <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="buttomPane" GridPane.columnSpan="2" GridPane.rowIndex="3" />
-         </children>
-      </GridPane>
-   </children>
+    <children>
+        <GridPane styleClass="backGrid" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints maxHeight="100.0" minHeight="80.0" vgrow="SOMETIMES" />
+                <RowConstraints vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="100.0" minHeight="80.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <HBox prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../resources/img/title_black.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </HBox>
+                <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="footPane" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+                <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                    <tabs>
+                        <Tab fx:id="Tab_QueryTran" style="-fx-pref-width: 100px;" styleClass="functionButton" text="交易查询及退货" />
+                        <Tab fx:id="Tab_UpdateStock" styleClass="functionButton" text="库存更新">
+                            <content>
+                                <AnchorPane fx:id="updateInventory" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                            </content>
+                        </Tab>
+                        <Tab fx:id="Tab_ManualSell" styleClass="functionButton" text="手工销售">
+                            <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                            </content>
+                        </Tab>
+                        <Tab fx:id="Tab_QueryStatement" styleClass="functionButton" text="账单查询">
+                            <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                            </content>
+                        </Tab>
+                    </tabs>
+                </TabPane>
+            </children>
+        </GridPane>
+    </children>
 </AnchorPane>

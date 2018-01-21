@@ -205,25 +205,15 @@
 }
 
 .functionButton{
-    -fx-pref-width: 100px;
-    -fx-pref-height: 40px;
-    -fx-padding:5px;
-    -fx-border-color: black;
-    -fx-border-radius: 2px;
-    -fx-background-color:aliceblue;
+    -fx-pref-width: 70px;
 }
-.functionHbox{
-  -fx-padding: 10px 0px 0px 0px;
-}
-.backGrid{
-    -fx-horizontal-grid-lines-visible: true;
-}
-.flowLayout{
-    -fx-border-color: black;
-    -fx-border-width: 1px 0px 1px 0px;
-}
-.buttomPane{
+.footPane{
     -fx-border-color: black;
     -fx-border-width: 1px 0px 0px 0px;
 }
-
+.fieldHbox{
+  -fx-padding: 5px;
+}
+.fieldLabel{
+ -fx-padding: 5px;
+}

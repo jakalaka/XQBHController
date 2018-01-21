@@ -5,17 +5,16 @@
     <file url="file://$PROJECT_DIR$/src/main/java/XQBHController/Controller/ComCall.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/XQBHController/Controller/ControllerInit.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/XQBHController/Controller/ControllerMain.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/XQBHController/ControllerAPI/ComCartoon.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/XQBHController/ControllerAPI/ScannerCartoon.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/XQBHController/ControllerAPI/ThingsOutCartoon.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/XQBHController/ControllerAPI/UpdateDSPXX.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/XQBHController/ControllerAPI/WarmingDialog.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/XQBHController/ControllerTran/ZDLogin.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/XQBHController/ControllerAPI/Com/UpdateDSPXX.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/XQBHController/ControllerAPI/Com/ZDLogin.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/XQBHController/ControllerAPI/UI/ComCartoon.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/XQBHController/ControllerAPI/UI/ScannerCartoon.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/XQBHController/ControllerAPI/UI/ThingsOutCartoon.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/XQBHController/ControllerAPI/UI/WarmingDialog.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/XQBHController/ControllerUI/Controller.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/XQBHController/ControllerUI/ControllerAPIUI/OrderDialogController.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/XQBHController/ControllerUI/ControllerUIMain.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/XQBHController/ControllerUI/MyCanvas.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/XQBHController/ControllerUI/MyModel.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/XQBHController/ControllerUI/OrderDialogController.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/XQBHController/Utils/FinishComListener/FinishComListener.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/XQBHController/Utils/Modbus/ModbusUtil.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/XQBHController/Utils/Model/modelHelper.java" charset="GBK" />

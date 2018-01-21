@@ -1,16 +1,12 @@
 package XQBHController.Utils.FinishComListener;
 
 import XQBHController.Controller.Com;
-import XQBHController.ControllerAPI.WarmingDialog;
-import XQBHController.ControllerUI.ControllerUIMain;
+import XQBHController.ControllerAPI.UI.WarmingDialog;
 import XQBHController.ControllerUI.Order;
 import XQBHController.Utils.log.Logger;
 
 import javax.comm.*;
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.TooManyListenersException;
 
 /**
  * Com21EventListener类使用“事件监听模式”监听串口COM21,

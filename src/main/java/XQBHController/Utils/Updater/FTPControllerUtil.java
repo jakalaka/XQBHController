@@ -1,12 +1,9 @@
 package XQBHController.Utils.Updater;
 
-import XQBHController.ControllerAPI.WarmingDialog;
-import XQBHController.Utils.log.Logger;
+import XQBHController.ControllerAPI.UI.WarmingDialog;
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
-import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPClientConfig;
-import org.apache.commons.net.ftp.FTPFile;
 
 import java.io.File;
 import java.io.FileOutputStream;
