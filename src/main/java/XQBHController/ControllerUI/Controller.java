@@ -38,7 +38,7 @@ public class Controller implements Initializable {
 
         //生成模型
 //        String rootPath = "resources/Model";
-//        model=new MyModel(rootPath,viewPane);
+//        Model=new MyModel(rootPath,viewPane);
 //
 //        ControllerUIMain.controller=this;
         //用户登录
@@ -84,6 +84,9 @@ public class Controller implements Initializable {
             e.printStackTrace();
         }
         Tab_ManualSell.setContent(root_Tab_ManualSell);
+
+
+
 
 
 

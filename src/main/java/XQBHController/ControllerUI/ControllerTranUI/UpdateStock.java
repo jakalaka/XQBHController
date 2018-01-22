@@ -1,31 +1,61 @@
 package XQBHController.ControllerUI.ControllerTranUI;
 
+import XQBHController.Controller.Com;
 import XQBHController.Controller.ComCall;
 import XQBHController.ControllerAPI.UI.WarmingDialog;
+import XQBHController.ControllerUI.ControllerUnitUI.Obj_Goods_Update;
 import XQBHController.Utils.Data.DataUtils;
+import XQBHController.Utils.log.Logger;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 
+import java.io.IOException;
+import java.math.BigDecimal;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 
 public class UpdateStock implements Initializable {
     @FXML
     private AnchorPane root;
+    @FXML
+    private FlowPane flowPane;
 
     public void initialize(URL location, ResourceBundle resources) {
 
         addListener(root, eventHandler);
+
+
+        for (int i=0;i<100;i++)
+        {
+
+            Obj_Goods_Update obj_goods_update=new Obj_Goods_Update("ÉÌÆ·"+i,100,"");
+            flowPane.getChildren().add(obj_goods_update.SP);
+        }
+
+
+        root.widthProperty().addListener((obs, oldVal, newVal) -> {
+            // Do whatever you want
+            flowPane.setPrefWrapLength(newVal.doubleValue());
+
+
+        });
+
 
 //        DataUtils.setEnable(root, "HTRQ_U_O", false);
 //        DataUtils.setEnable(root, "HTSJ_U_O", false);

@@ -53,12 +53,14 @@ public class DataUtils {
             WarmingDialog.show("无字段错误", "无" + hboxName + "字段,请联系管理员!");
             return;
         }
-        Node node_ = hBox.getChildren().get(1);
-        if (node_ instanceof TextField) {
-            ((TextField) node_).setText(string);
-        } else {
+       for (Node node_:hBox.getChildren())
+       {
+           if (node_ instanceof TextField)
+           {
+               ((TextField) node_).setText(string);
+           }
+       }
 
-        }
 
         return;
     }
