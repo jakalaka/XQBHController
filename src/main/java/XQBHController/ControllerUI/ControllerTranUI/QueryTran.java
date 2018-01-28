@@ -55,15 +55,14 @@ public class QueryTran implements Initializable {
             Object eventObj = event.getSource();
 
             if (eventObj instanceof TextField) {
-
-                if ("ZFBDDH_I".equals(DataUtils.getID(eventObj))) {
+                if ("ZFBDDH_I".equals(((TextField) eventObj).getId())) {
                     cleanValue();
                     Map In = new HashMap();
                     Map Out = new HashMap();
                     In.put("CXFS_U", "z");
                     In.put("ZFBDDH", DataUtils.getValue(root, "ZFBDDH_I"));
-                    if (false == ComCall.Call("ControllerSinglequery", "ControllerSinglequery", In, Out)) {
-                        WarmingDialog.show("查询出错", Out.get("CWXX_U").toString());
+                    if (false == ComCall.Call("ControllerSingleQuery", "ControllerSingleQuery", In, Out)) {
+                        WarmingDialog.show(WarmingDialog.Dialog_ERR, Out.get("CWXX_U").toString());
                         return;
                     }
                     DataUtils.setValue(root, "HTRQ_U_O", Out.get("YHTRQ_").toString());
@@ -82,15 +81,15 @@ public class QueryTran implements Initializable {
                     DataUtils.setValue(root, "JYZT_U_O", DataUtils.getListMean("JYZT_U",Out.get("JYZT_U").toString()));
 
 
-                } else if ("WXDH_U_I".equals(DataUtils.getID(eventObj))) {
+                } else if ("WXDH_U_I".equals(((TextField) eventObj).getId())) {
 
                     cleanValue();
                     Map In = new HashMap();
                     Map Out = new HashMap();
                     In.put("CXFS_U", "w");
                     In.put("WXDH_U", DataUtils.getValue(root, "WXDH_U_I"));
-                    if (false == ComCall.Call("ControllerSinglequery", "ControllerSinglequery", In, Out)) {
-                        WarmingDialog.show("查询出错", Out.get("CWXX_U").toString());
+                    if (false == ComCall.Call("ControllerSingleQuery", "ControllerSingleQuery", In, Out)) {
+                        WarmingDialog.show(WarmingDialog.Dialog_ERR, Out.get("CWXX_U").toString());
                         return;
                     }
                     DataUtils.setValue(root, "HTRQ_U_O", Out.get("YHTRQ_").toString());
@@ -107,7 +106,7 @@ public class QueryTran implements Initializable {
                     DataUtils.setValue(root, "SPXX_U_O", Out.get("SPXX_U").toString());
                     DataUtils.setValue(root, "FKM_UU_O", Out.get("FKM_UU").toString());
                     DataUtils.setValue(root, "JYZT_U_O", DataUtils.getListMean("JYZT_U",Out.get("JYZT_U").toString()));
-                } else if ("HTLS_U_I".equals(DataUtils.getID(eventObj))) {
+                } else if ("HTLS_U_I".equals(((TextField) eventObj).getId())) {
                     cleanValue();
                     Map In = new HashMap();
                     Map Out = new HashMap();
@@ -115,13 +114,13 @@ public class QueryTran implements Initializable {
                     String sHTRQ_U=DataUtils.getValue(root, "HTRQ_U_I");
                     if(sHTRQ_U.length()<=0)
                     {
-                        WarmingDialog.show("查询出错", "必须选择后台日期");
+                        WarmingDialog.show(WarmingDialog.Dialog_INPUTERR, "必须选择后台日期");
                         return;
                     }
                     In.put("HTRQ_U", sHTRQ_U);
                     In.put("HTLS_U", DataUtils.getValue(root, "HTLS_U_I"));
                     if (false == ComCall.Call("ControllerSingleQuery", "ControllerSingleQuery", In, Out)) {
-                        WarmingDialog.show("查询出错", Out.get("CWXX_U").toString());
+                        WarmingDialog.show(WarmingDialog.Dialog_ERR, Out.get("CWXX_U").toString());
                         return;
                     }
                     DataUtils.setValue(root, "HTRQ_U_O", Out.get("YHTRQ_").toString());
@@ -142,22 +141,22 @@ public class QueryTran implements Initializable {
 
 
             } else if (eventObj instanceof ComboBox) {
-                if ("CXFS_U_I".equals(DataUtils.getID(eventObj))) {
+                if ("CXFS_U_I".equals(((ComboBox) eventObj).getId())) {
                     if ("支付宝单号".equals(DataUtils.getValue(root, eventObj))) {
-                        DataUtils.setVisible(root, "HTLS_U_I", false);
-                        DataUtils.setVisible(root, "HTRQ_U_I", false);
-                        DataUtils.setVisible(root, "WXDH_U_I", false);
-                        DataUtils.setVisible(root, "ZFBDDH_I", true);
+                        DataUtils.setVisible(root, "HB_HTLS_U_I", false);
+                        DataUtils.setVisible(root, "HB_HTRQ_U_I", false);
+                        DataUtils.setVisible(root, "HB_WXDH_U_I", false);
+                        DataUtils.setVisible(root, "HB_ZFBDDH_I", true);
                     } else if ("微信单号".equals(DataUtils.getValue(root, eventObj))) {
-                        DataUtils.setVisible(root, "HTLS_U_I", false);
-                        DataUtils.setVisible(root, "HTRQ_U_I", false);
-                        DataUtils.setVisible(root, "WXDH_U_I", true);
-                        DataUtils.setVisible(root, "ZFBDDH_I", false);
+                        DataUtils.setVisible(root, "HB_HTLS_U_I", false);
+                        DataUtils.setVisible(root, "HB_HTRQ_U_I", false);
+                        DataUtils.setVisible(root, "HB_WXDH_U_I", true);
+                        DataUtils.setVisible(root, "HB_ZFBDDH_I", false);
                     } else if ("后台流水".equals(DataUtils.getValue(root, eventObj))) {
-                        DataUtils.setVisible(root, "HTLS_U_I", true);
-                        DataUtils.setVisible(root, "HTRQ_U_I", true);
-                        DataUtils.setVisible(root, "WXDH_U_I", false);
-                        DataUtils.setVisible(root, "ZFBDDH_I", false);
+                        DataUtils.setVisible(root, "HB_HTLS_U_I", true);
+                        DataUtils.setVisible(root, "HB_HTRQ_U_I", true);
+                        DataUtils.setVisible(root, "HB_WXDH_U_I", false);
+                        DataUtils.setVisible(root, "HB_ZFBDDH_I", false);
                     }
                 }
             }

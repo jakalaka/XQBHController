@@ -18,26 +18,26 @@
                <children>
                   <FlowPane>
                      <children>
-                        <HBox fx:id="QSRQ_U_I" styleClass="fieldHbox">
+                        <HBox styleClass="fieldHbox">
                            <children>
                               <Label styleClass="fieldLabel" text="起始日期" />
-                              <DatePicker />
+                              <DatePicker fx:id="QSRQ_U_I" />
                            </children>
                         </HBox>
-                        <HBox fx:id="ZZRQ_U_I" styleClass="fieldHbox">
+                        <HBox styleClass="fieldHbox">
                            <children>
                               <Label styleClass="fieldLabel" text="终止日期" />
-                              <DatePicker />
+                              <DatePicker fx:id="ZZRQ_U_I" />
                            </children>
                         </HBox>
                      </children>
                   </FlowPane>
                   <FlowPane>
                      <children>
-                        <HBox fx:id="JYZT_U_I" styleClass="fieldHbox">
+                        <HBox styleClass="fieldHbox">
                            <children>
                               <Label styleClass="fieldLabel" text="交易状态" />
-                              <ComboBox prefWidth="150.0" value="">
+                              <ComboBox fx:id="JYZT_U_I" prefWidth="150.0" value="">
                                  <items>
                                     <FXCollections fx:factory="observableArrayList">
                                        <String fx:value="" />
@@ -52,10 +52,10 @@
                               </ComboBox>
                            </children>
                         </HBox>
-                        <HBox fx:id="SHBH_U_I" styleClass="fieldHbox">
+                        <HBox styleClass="fieldHbox">
                            <children>
                               <Label styleClass="fieldLabel" text="商户编号" />
-                              <ComboBox fx:id="SHBH_U_CB_I" prefWidth="150.0">
+                              <ComboBox fx:id="SHBH_U_I" prefWidth="150.0">
                                  <items>
                                     <FXCollections fx:factory="observableArrayList">
 
@@ -64,10 +64,10 @@
                               </ComboBox>
                            </children>
                         </HBox>
-                        <HBox fx:id="ZDBH_U_I" styleClass="fieldHbox">
+                        <HBox styleClass="fieldHbox">
                            <children>
                               <Label styleClass="fieldLabel" text="终端编号" />
-                              <ComboBox fx:id="ZDBH_U_CB_I" prefWidth="150.0">
+                              <ComboBox fx:id="ZDBH_U_I" prefWidth="150.0">
                                  <items>
                                     <FXCollections fx:factory="observableArrayList">
 
@@ -76,10 +76,10 @@
                               </ComboBox>
                            </children>
                         </HBox>
-                        <HBox fx:id="ZFZHLX_I" styleClass="fieldHbox">
+                        <HBox styleClass="fieldHbox">
                            <children>
                               <Label styleClass="fieldLabel" text="支付方式" />
-                              <ComboBox prefWidth="150.0" value="">
+                              <ComboBox fx:id="ZFZHLX_I" prefWidth="150.0" value="">
                                  <items>
                                     <FXCollections fx:factory="observableArrayList">
                                        <String fx:value="" />
@@ -101,19 +101,19 @@
                      <children>
                         <VBox>
                            <children>
-                              <TableView fx:id="tableView">
+                              <TableView fx:id="tableView" editable="true">
                                 <columns>
-                                  <TableColumn fx:id="HTRQ_U_GRD_O" minWidth="-1.0" prefWidth="75.0" text="后台日期" />
-                                  <TableColumn fx:id="HTSJ_U_GRD_O" prefWidth="75.0" text="后台时间" />
-                                    <TableColumn fx:id="HTLS_U_GRD_O" prefWidth="75.0" text="后台流水" />
-                                    <TableColumn fx:id="JYJE_U_GRD_O" prefWidth="75.0" text="交易金额" />
-                                    <TableColumn fx:id="ZFZHLX_GRD_O" prefWidth="75.0" text="支付方式" />
-                                    <TableColumn fx:id="SFDH_U_GRD_O" prefWidth="75.0" text="三方单号" />
-                                    <TableColumn fx:id="KHBH_U_GRD_O" prefWidth="75.0" text="客户编号" />
-                                    <TableColumn fx:id="SHBH_U_GRD_O" prefWidth="75.0" text="商户编号" />
-                                    <TableColumn fx:id="ZDBH_U_GRD_O" prefWidth="75.0" text="终端编号" />
-                                    <TableColumn fx:id="SPXX_U_GRD_O" prefWidth="75.0" text="商品信息" />
-                                    <TableColumn fx:id="JYZT_U_GRD_O" prefWidth="75.0" text="交易状态" />
+                                  <TableColumn fx:id="HTRQ_U_GRD_O" minWidth="-1.0" onEditCommit="#commitHandler" prefWidth="75.0" text="后台日期" />
+                                  <TableColumn fx:id="HTSJ_U_GRD_O" onEditCommit="#commitHandler" prefWidth="75.0" text="后台时间" />
+                                    <TableColumn fx:id="HTLS_U_GRD_O" onEditCommit="#commitHandler" prefWidth="75.0" text="后台流水" />
+                                    <TableColumn fx:id="JYJE_U_GRD_O" onEditCommit="#commitHandler" prefWidth="75.0" text="交易金额" />
+                                    <TableColumn fx:id="ZFZHLX_GRD_O" onEditCommit="#commitHandler" prefWidth="75.0" text="支付方式" />
+                                    <TableColumn fx:id="SFDH_U_GRD_O" onEditCommit="#commitHandler" prefWidth="75.0" text="三方单号" />
+                                    <TableColumn fx:id="KHBH_U_GRD_O" onEditCommit="#commitHandler" prefWidth="75.0" text="客户编号" />
+                                    <TableColumn fx:id="SHBH_U_GRD_O" onEditCommit="#commitHandler" prefWidth="75.0" text="商户编号" />
+                                    <TableColumn fx:id="ZDBH_U_GRD_O" onEditCommit="#commitHandler" prefWidth="75.0" text="终端编号" />
+                                    <TableColumn fx:id="SPXX_U_GRD_O" onEditCommit="#commitHandler" prefWidth="75.0" text="商品信息" />
+                                    <TableColumn fx:id="JYZT_U_GRD_O" onEditCommit="#commitHandler" prefWidth="75.0" text="交易状态" />
                                 </columns>
                               </TableView>
                               <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">

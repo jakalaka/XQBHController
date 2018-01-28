@@ -50,7 +50,7 @@ public class OrderDialogController {
         /*暂停销售的检查*/
         if(Com.pauseFLG)
         {
-            WarmingDialog.show("服务暂停", "该设备在近5分钟内会更新重启!!!\n在此期间暂停服务，请您稍后!!!");
+            WarmingDialog.show(WarmingDialog.Dialog_STOP, "该设备在近5分钟内会更新重启!!!\n在此期间暂停服务，请您稍后!!!");
             return;
         }
 

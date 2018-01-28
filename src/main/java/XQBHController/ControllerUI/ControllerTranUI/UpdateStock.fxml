@@ -21,17 +21,27 @@
                            <children>
                               <AnchorPane>
                                  <children>
-                                    <HBox fx:id="ZFBDDH_I" styleClass="fieldHbox">
+                                    <HBox styleClass="fieldHbox">
                                        <children>
-                                          <Label styleClass="fieldLabel" text="商品名称" />
-                                          <TextField />
+                                          <Label styleClass="fieldLabel" text="终端编号" />
+                                          <ComboBox fx:id="ZDBH_U_I" prefWidth="150.0" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane>
+                                 <children>
+                                    <HBox styleClass="fieldHbox">
+                                       <children>
+                                          <Label styleClass="fieldLabel" text="搜索条件" />
+                                          <TextField fx:id="SEARCH_I" />
                                        </children>
                                     </HBox>
                                  </children>
                               </AnchorPane>
                            </children>
                         </HBox>
-                        <Button mnemonicParsing="false" text="刷新" />
+                        <Button fx:id="reload" mnemonicParsing="false" text="重新加载商品模型" />
                      </children>
                   </FlowPane>
                </children>

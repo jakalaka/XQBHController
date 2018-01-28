@@ -5,6 +5,7 @@ import XQBHController.Controller.ComCall;
 import XQBHController.Utils.log.Logger;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class SHLogin {
@@ -30,18 +31,21 @@ public class SHLogin {
 
 
         //将对应的商户信息，终端信息写到内存中
-        String sZDXX_U=Out.get("ZDXX_U").toString();
+        List<HashMap> listZDLIST=(List) Out.get("ZDLIST");
+        List<HashMap> listSHLIST=(List) Out.get("SHLIST");
 
-        Com.listSHXX_U.add(sSHBH_U);
-        Logger.log("LOG_DEBUG","Com.listSHXX_U ADD "+sSHBH_U);
+        Com.listKH_SHXX.add(listSHLIST.get(0));
 
 
-        for (String string:sZDXX_U.split("\\|"))
+        for (Map map:listZDLIST)
         {
-            Com.listZDXX_U.add(string);
-            Logger.log("LOG_DEBUG","Com.listZDXX_U ADD "+string);
-
+            System.out.println("ZDBH_U="+map.get("ZDBH_U")+" IP="+map.get("IP_UUU"));
+            Com.listSH_ZDXX.add(map);
         }
+
+        Map map=new HashMap();
+        map.put("SHBH_U",sSHBH_U);
+
 
         Logger.log("LOG_IO", Com.getOut);
 

@@ -89,8 +89,9 @@ public class Controller implements Initializable {
 
 
 
-
         Com.UIFinish=true;
+
+
 
 
         //µÇÂ¼

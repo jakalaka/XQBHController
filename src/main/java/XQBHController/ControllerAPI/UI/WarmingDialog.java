@@ -17,9 +17,10 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 
 public class WarmingDialog extends Application {
-    public static final String Dialog_OVER = "交易成功";
-    public static final String Dialog_ERR = "程序垮掉了";
-    public static final String Dialog_SELLOUT = "商品已售罄";
+    public static final String Dialog_OVER = "执行成功";
+    public static final String Dialog_ERR = "系统错误";
+    public static final String Dialog_STOP = "服务暂停";
+    public static final String Dialog_INPUTERR = "输入错误";
     public static String sTitle;
     public static String sMsg;
 
@@ -33,7 +34,10 @@ public class WarmingDialog extends Application {
             });
         }
         else
-            Logger.log("LOG_IO", sMsg);
+            Logger.log("LOG_IO", sMsg,new Object[]{Thread.currentThread().getStackTrace()[2].getClassName(),
+                    Thread.currentThread().getStackTrace()[2].getMethodName(),
+                    Thread.currentThread().getStackTrace()[2].getLineNumber()
+            });
         if (Com.UIFinish) {
 
             FXMLLoader loader = new FXMLLoader();

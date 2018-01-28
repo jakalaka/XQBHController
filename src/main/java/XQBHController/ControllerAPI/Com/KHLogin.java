@@ -5,6 +5,7 @@ import XQBHController.Controller.ComCall;
 import XQBHController.Utils.log.Logger;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class KHLogin {
@@ -25,18 +26,18 @@ public class KHLogin {
         Logger.log("LOG_DEBUG", "spand " + (endTime - startTime) + "ms");
 
         //将对应的商户信息，终端信息写到内存中
-        String sSHXX_U=Out.get("SHXX_U").toString();
-        String sZDXX_U=Out.get("ZDXX_U").toString();
-        for (String string:sSHXX_U.split("\\|"))
-        {
-            Com.listSHXX_U.add(string);
-            Logger.log("LOG_DEBUG","Com.listSHXX_U ADD "+string);
+        List<HashMap> listZDLIST=(List) Out.get("ZDLIST");
+        List<HashMap> listSHLIST=(List) Out.get("SHLIST");
 
-        }
-        for (String string:sZDXX_U.split("\\|"))
+
+        for (Map map:listSHLIST)
         {
-            Com.listZDXX_U.add(string);
-            Logger.log("LOG_DEBUG","Com.listZDXX_U ADD "+string);
+            Com.listKH_SHXX.add(map);
+        }
+
+        for (Map map:listZDLIST)
+        {
+            Com.listSH_ZDXX.add(map);
         }
 
         Logger.log("LOG_IO", Com.getOut);

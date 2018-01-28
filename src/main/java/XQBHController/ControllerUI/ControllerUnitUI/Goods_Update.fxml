@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="XQBHController.ControllerUI.ControllerUnitUI.Goods_Update">
+<GridPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="XQBHController.ControllerUI.ControllerUnitUI.Goods_Update">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="30.0" minWidth="10.0" prefWidth="30.0" />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="150.0" />
@@ -22,6 +22,7 @@
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="3" GridPane.rowIndex="2">
          <children>
             <Label fx:id="goodsName" text="XXX商品" />
+            <TextField fx:id="position" maxHeight="0.0" maxWidth="0.0" minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" visible="false" />
          </children>
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: black;" GridPane.columnSpan="3">
@@ -34,7 +35,7 @@
             <Button fx:id="minus" mnemonicParsing="false" text="-" />
          </children>
       </HBox>
-      <HBox fx:id="hb_goodsNum" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: black; -fx-border-width: 1px 0px 1px 0px;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: black; -fx-border-width: 1px 0px 1px 0px;" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <children>
             <TextField fx:id="goodsNum" alignment="CENTER" maxHeight="30.0" maxWidth="60.0" minHeight="30.0" minWidth="60.0" prefHeight="30.0" prefWidth="60.0" text="123" />
          </children>

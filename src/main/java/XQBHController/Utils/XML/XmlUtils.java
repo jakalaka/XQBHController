@@ -3,12 +3,15 @@ package XQBHController.Utils.XML; /**
  */
 
 import XQBHController.Utils.log.Logger;
+//import com.alibaba.fastjson.JSON;
+//import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import org.apache.commons.lang3.*;
 import org.dom4j.DocumentException;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
+import com.google.gson.*;
 
 import java.util.*;
 
@@ -21,6 +24,8 @@ public class XmlUtils {
      * @return
      */
     public static String map2XML(Map<String, Object> In) {
+
+
         String jsonString = JSON.toJSONString(In);
         return jsonString;
     }

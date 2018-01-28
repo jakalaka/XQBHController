@@ -6,14 +6,11 @@ import XQBHController.Controller.Table.Model.CXTCSKey;
 import XQBHController.Controller.Table.basic.DBAccess;
 import XQBHController.ControllerAPI.UI.WarmingDialog;
 import XQBHController.Utils.log.Logger;
-import javafx.collections.ObservableList;
 import org.apache.ibatis.session.SqlSession;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by Administrator on 2017/7/1 0001.
@@ -76,9 +73,14 @@ public class Com {
     public static boolean isLogin=false;
 
 
-    public static List<String> listSHXX_U=new ArrayList();
 
-    public static List<String> listZDXX_U=new ArrayList();;
+    public static List< Map> listKH_SHXX=new ArrayList();
+    public static List< Map> listSH_ZDXX=new ArrayList();
+
+    public static String modelFile="resources/ZDBH_U/主页";
+
+    public static String modelZipFile="resources/ZDBH_U/主页.zip";
+
 
     /**
      * 获取前台流水=10位终端编号+6位交易时间

@@ -3,15 +3,20 @@ package XQBHController.ControllerUI.ControllerTranUI;
 import XQBHController.Controller.Com;
 import XQBHController.ControllerAPI.Com.KHLogin;
 import XQBHController.ControllerAPI.Com.SHLogin;
+import XQBHController.Utils.Data.DataUtils;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
-public class LoginController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class LoginController implements Initializable{
     public Stage stage;
     private Scene scene;
     @FXML
@@ -77,4 +82,12 @@ public class LoginController {
         this.scene = scene;
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        DataUtils.setValue(userName,"userName","18984101377");
+        DataUtils.setValue(passWord,"passWord","123321");
+        RB_Customer.setSelected(true);
+
+
+    }
 }
