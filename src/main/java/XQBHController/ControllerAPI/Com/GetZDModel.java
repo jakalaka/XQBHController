@@ -21,10 +21,11 @@ public class GetZDModel {
                 Com.listSH_ZDXX) {
             if (sZDBH_U.equals(map.get("ZDBH_U"))) {
                 sIP = map.get("IP_UUU").toString();
+                break;
             }
         }
         if (null == sIP || "".equals(sIP)) {
-            WarmingDialog.show(WarmingDialog.Dialog_ERR, "终端未登录找不到对应终端信息");
+            WarmingDialog.show(WarmingDialog.Dialog_ERR, "终端未登录或找不到对应终端"+sZDBH_U+"信息");
             return null;
         }
 //客户端

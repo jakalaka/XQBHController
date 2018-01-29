@@ -21,10 +21,9 @@ import javafx.scene.layout.Pane;
 
 import java.math.BigDecimal;
 import java.net.URL;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.ResourceBundle;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.*;
 
 public class QueryStatement implements Initializable {
     @FXML
@@ -37,6 +36,10 @@ public class QueryStatement implements Initializable {
 
     @FXML
     private ComboBox ZDBH_U_I;
+    @FXML
+    private DatePicker QSRQ_U_I;
+    @FXML
+    private DatePicker ZZRQ_U_I;
 
 
     static boolean initFlg = false;
@@ -87,6 +90,12 @@ public class QueryStatement implements Initializable {
 
                 }
                 SHBH_U_I.setValue(SHBH_U_I.getItems().get(0));
+
+
+
+                QSRQ_U_I.setValue(LocalDate.now());
+                ZZRQ_U_I.setValue(LocalDate.now());
+
                 initFlg = true;
             }
 
@@ -152,34 +161,32 @@ public class QueryStatement implements Initializable {
 
                     for (Map map :
                             listResoult) {
-                        data.add(new tableInfo(map.get("HTRQ_U").toString(),map.get("HTSJ_U").toString(),map.get("HTLS_U").toString(),map.get("JYJE_U").toString(),DataUtils.getListMean("ZFZHLX",map.get("ZFZHLX").toString()),map.get("SFDH_U").toString(),map.get("KHBH_U").toString(),map.get("SHBH_U").toString(),map.get("ZDBH_U").toString(),map.get("SPXX_U").toString(),DataUtils.getListMean("JYZT_U",map.get("JYZT_U").toString())));
+                        data.add(new tableInfo(map.get("HTRQ_U").toString(), map.get("HTSJ_U").toString(), map.get("HTLS_U").toString(), map.get("JYJE_U").toString(), DataUtils.getListMean("ZFZHLX", map.get("ZFZHLX").toString()), map.get("SFDH_U").toString(), map.get("KHBH_U").toString(), map.get("SHBH_U").toString(), map.get("ZDBH_U").toString(), map.get("SPXX_U").toString(), DataUtils.getListMean("JYZT_U", map.get("JYZT_U").toString())));
                     }
-                    ((TableColumn)tableView.getColumns().get(0)).setCellValueFactory(new PropertyValueFactory<>("HTRQ_U_O"));
-                    ((TableColumn)tableView.getColumns().get(0)).setCellFactory(TextFieldTableCell.forTableColumn());
-                    ((TableColumn)tableView.getColumns().get(1)).setCellValueFactory(new PropertyValueFactory<>("HTSJ_U_O"));
-                    ((TableColumn)tableView.getColumns().get(1)).setCellFactory(TextFieldTableCell.forTableColumn());
-                    ((TableColumn)tableView.getColumns().get(2)).setCellValueFactory(new PropertyValueFactory<>("HTLS_U_O"));
-                    ((TableColumn)tableView.getColumns().get(2)).setCellFactory(TextFieldTableCell.forTableColumn());
-                    ((TableColumn)tableView.getColumns().get(3)).setCellValueFactory(new PropertyValueFactory<>("HTJYM__O"));
-                    ((TableColumn)tableView.getColumns().get(3)).setCellFactory(TextFieldTableCell.forTableColumn());
-                    ((TableColumn)tableView.getColumns().get(4)).setCellValueFactory(new PropertyValueFactory<>("ZFZHLX_O"));
-                    ((TableColumn)tableView.getColumns().get(4)).setCellFactory(TextFieldTableCell.forTableColumn());
-                    ((TableColumn)tableView.getColumns().get(5)).setCellValueFactory(new PropertyValueFactory<>("JYJE_U_O"));
-                    ((TableColumn)tableView.getColumns().get(5)).setCellFactory(TextFieldTableCell.forTableColumn());
-                    ((TableColumn)tableView.getColumns().get(6)).setCellValueFactory(new PropertyValueFactory<>("SHBH_U_O"));
-                    ((TableColumn)tableView.getColumns().get(6)).setCellFactory(TextFieldTableCell.forTableColumn());
-                    ((TableColumn)tableView.getColumns().get(7)).setCellValueFactory(new PropertyValueFactory<>("CZZH_U_O"));
-                    ((TableColumn)tableView.getColumns().get(7)).setCellFactory(TextFieldTableCell.forTableColumn());
-                    ((TableColumn)tableView.getColumns().get(8)).setCellValueFactory(new PropertyValueFactory<>("SPXX_U_O"));
-                    ((TableColumn)tableView.getColumns().get(8)).setCellFactory(TextFieldTableCell.forTableColumn());
-                    ((TableColumn)tableView.getColumns().get(9)).setCellValueFactory(new PropertyValueFactory<>("FKM_UU_O"));
-                    ((TableColumn)tableView.getColumns().get(9)).setCellFactory(TextFieldTableCell.forTableColumn());
-                    ((TableColumn)tableView.getColumns().get(10)).setCellValueFactory(new PropertyValueFactory<>("JYZT_U_O"));
-                    ((TableColumn)tableView.getColumns().get(10)).setCellFactory(TextFieldTableCell.forTableColumn());
+                    ((TableColumn) tableView.getColumns().get(0)).setCellValueFactory(new PropertyValueFactory<>("HTRQ_U_O"));
+                    ((TableColumn) tableView.getColumns().get(0)).setCellFactory(TextFieldTableCell.forTableColumn());
+                    ((TableColumn) tableView.getColumns().get(1)).setCellValueFactory(new PropertyValueFactory<>("HTSJ_U_O"));
+                    ((TableColumn) tableView.getColumns().get(1)).setCellFactory(TextFieldTableCell.forTableColumn());
+                    ((TableColumn) tableView.getColumns().get(2)).setCellValueFactory(new PropertyValueFactory<>("HTLS_U_O"));
+                    ((TableColumn) tableView.getColumns().get(2)).setCellFactory(TextFieldTableCell.forTableColumn());
+                    ((TableColumn) tableView.getColumns().get(3)).setCellValueFactory(new PropertyValueFactory<>("HTJYM__O"));
+                    ((TableColumn) tableView.getColumns().get(3)).setCellFactory(TextFieldTableCell.forTableColumn());
+                    ((TableColumn) tableView.getColumns().get(4)).setCellValueFactory(new PropertyValueFactory<>("ZFZHLX_O"));
+                    ((TableColumn) tableView.getColumns().get(4)).setCellFactory(TextFieldTableCell.forTableColumn());
+                    ((TableColumn) tableView.getColumns().get(5)).setCellValueFactory(new PropertyValueFactory<>("JYJE_U_O"));
+                    ((TableColumn) tableView.getColumns().get(5)).setCellFactory(TextFieldTableCell.forTableColumn());
+                    ((TableColumn) tableView.getColumns().get(6)).setCellValueFactory(new PropertyValueFactory<>("SHBH_U_O"));
+                    ((TableColumn) tableView.getColumns().get(6)).setCellFactory(TextFieldTableCell.forTableColumn());
+                    ((TableColumn) tableView.getColumns().get(7)).setCellValueFactory(new PropertyValueFactory<>("CZZH_U_O"));
+                    ((TableColumn) tableView.getColumns().get(7)).setCellFactory(TextFieldTableCell.forTableColumn());
+                    ((TableColumn) tableView.getColumns().get(8)).setCellValueFactory(new PropertyValueFactory<>("SPXX_U_O"));
+                    ((TableColumn) tableView.getColumns().get(8)).setCellFactory(TextFieldTableCell.forTableColumn());
+                    ((TableColumn) tableView.getColumns().get(9)).setCellValueFactory(new PropertyValueFactory<>("FKM_UU_O"));
+                    ((TableColumn) tableView.getColumns().get(9)).setCellFactory(TextFieldTableCell.forTableColumn());
+                    ((TableColumn) tableView.getColumns().get(10)).setCellValueFactory(new PropertyValueFactory<>("JYZT_U_O"));
+                    ((TableColumn) tableView.getColumns().get(10)).setCellFactory(TextFieldTableCell.forTableColumn());
 
                     tableView.setItems(data);
-
-
 
 
                 }
@@ -190,9 +197,9 @@ public class QueryStatement implements Initializable {
     };
 
     @FXML
-    public void commitHandler(TableColumn.CellEditEvent<tableInfo, String> t ){
+    public void commitHandler(TableColumn.CellEditEvent<tableInfo, String> t) {
 
-        t.getTableColumn().getProperties().put("StringProperty",t.getOldValue());
+        t.getTableColumn().getProperties().put("StringProperty", t.getOldValue());
         t.getTableView().refresh();
     }
 
@@ -217,6 +224,7 @@ public class QueryStatement implements Initializable {
     public void cleanValue() {
 
     }
+
     public static class tableInfo {
 
         public String getHTRQ_U_O() {

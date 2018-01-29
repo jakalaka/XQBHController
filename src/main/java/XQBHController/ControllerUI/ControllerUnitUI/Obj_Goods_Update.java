@@ -3,6 +3,7 @@ package XQBHController.ControllerUI.ControllerUnitUI;
 import XQBHController.Controller.Com;
 import XQBHController.Utils.Data.DataUtils;
 import XQBHController.Utils.Model.DataModel;
+import XQBHController.Utils.log.Logger;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.image.Image;
@@ -25,12 +26,15 @@ public class Obj_Goods_Update {
         }
         SP.setId(dataModel.getPosition());
         DataUtils.setValue(SP, "goodsName", dataModel.getModelName());
-        DataUtils.setValue(SP, "goodsNum", "0");
+        DataUtils.setValue(SP, "goodsNum",dataModel.getGoodsAmount()+"");
         DataUtils.setValue(SP, "position", dataModel.getPosition());
-        String imagePath = dataModel.getImgs()[0];
+        DataUtils.setValue(SP, "ZDBH_U", sZDBH_U);
+
+        String imagePath = "resources/"+sZDBH_U+"/"+dataModel.getImgs()[0];
         File file = new File(imagePath);
         Image image = null;
         image = new Image(String.valueOf(file.toURI()));
+        Logger.log("LOG_DEBUG",String.valueOf(file.toURI()));
         ((ImageView) DataUtils.getTarget(SP, "image")).setImage(image);
 
 

@@ -24,6 +24,7 @@ public class DownloadModelFile {
                 Com.listSH_ZDXX) {
             if (sZDBH_U.equals(map.get("ZDBH_U"))) {
                 sIP = map.get("IP_UUU").toString();
+                break;
             }
         }
         if (null == sIP || "".equals(sIP)) {

@@ -4,6 +4,7 @@ import XQBHController.Controller.Com;
 import XQBHController.ControllerAPI.Com.DownloadModelFile;
 import XQBHController.ControllerAPI.Com.GetZDModel;
 import XQBHController.ControllerAPI.UI.WarmingDialog;
+import XQBHController.ControllerUI.ControllerAPIUI.GetLastModelFromZD;
 import XQBHController.ControllerUI.ControllerUnitUI.Obj_Goods_Update;
 import XQBHController.Utils.Data.DataUtils;
 import XQBHController.Utils.Model.DataModel;
@@ -44,7 +45,7 @@ public class UpdateStock implements Initializable {
     @FXML
     private ImageView image;
 
-    private Map<String, DataModel> mapDataModel = new HashMap();
+    public static Map<String, DataModel> mapDataModel = new HashMap();
 
 
     static boolean initFlg = false;
@@ -61,12 +62,17 @@ public class UpdateStock implements Initializable {
                 for (Map map :
                         Com.listSH_ZDXX) {
                     String sZDBH_U = map.get("ZDBH_U").toString();
-                    DataModel dataModel = new DataModel(Com.modelFile.replaceAll("ZDBH_U", sZDBH_U));
-                    if (dataModel.isBuildSuccess())
-                        mapDataModel.put(sZDBH_U, dataModel);
-                    Logger.log("LOG_DEBUG", "put " + sZDBH_U + "'s model");
-                    if (dataModel == null)
+                     DataModel dataModel = GetLastModelFromZD.exec(sZDBH_U);
+                    if (dataModel == null) {
                         Logger.log("LOG_DEBUG", sZDBH_U + "'s model is null");
+                        continue;
+                    }
+                    if (dataModel.isBuildSuccess()) {
+                        mapDataModel.put(sZDBH_U, dataModel);
+                    }else {
+                        WarmingDialog.show(WarmingDialog.Dialog_ERR,"错误的终端信息["+sZDBH_U+"]");
+                    }
+                    Logger.log("LOG_DEBUG", "put " + sZDBH_U + "'s model");
 
                 }
 
@@ -109,20 +115,14 @@ public class UpdateStock implements Initializable {
                             Com.listSH_ZDXX) {
                         if (sZDBH_U.equals(map.get("ZDBH_U"))) {
                             sIP = map.get("IP_UUU").toString();
+                            break;
                         }
                     }
                     Logger.log("LOG_DEBUG", "ZDBH_U=[" + sZDBH_U + "]  IP=[" + sIP + "]");
 
-                    DataModel dataModel = null;
-                    try {
-                        dataModel = GetZDModel.exec(sZDBH_U);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    if (dataModel == null) {
-                        WarmingDialog.show(WarmingDialog.Dialog_ERR, "获取终端" + sZDBH_U + "的商品数量失败!!!");
+                    DataModel dataModel = GetLastModelFromZD.exec(sZDBH_U);
+                    if (dataModel==null)
                         return;
-                    }
 
                     setGoodsAccout(dataModel);
 
@@ -159,20 +159,14 @@ public class UpdateStock implements Initializable {
                             Com.listSH_ZDXX) {
                         if (sZDBH_U.equals(map.get("ZDBH_U"))) {
                             sIP = map.get("IP_UUU").toString();
+                            break;
                         }
                     }
                     Logger.log("LOG_DEBUG", "ZDBH_U=[" + sZDBH_U + "]  IP=[" + sIP + "]");
 
-                    DataModel dataModel = null;
-                    try {
-                        dataModel = GetZDModel.exec(sZDBH_U);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    if (dataModel == null) {
-                        WarmingDialog.show(WarmingDialog.Dialog_ERR, "获取终端" + sZDBH_U + "的商品数量失败!!!");
+                    DataModel dataModel = GetLastModelFromZD.exec(sZDBH_U);
+                    if (dataModel==null)
                         return;
-                    }
 
                     setGoodsAccout(dataModel);
                     WarmingDialog.show(WarmingDialog.Dialog_OVER, "加载商品数据成功!!!");
@@ -180,23 +174,19 @@ public class UpdateStock implements Initializable {
 
                 }
             } else if (eventObj instanceof TextField) {
-                if ("SEARCH_I".equals(((TextField) eventObj).getId())) {
+                if ("SEARCH_I".equals(((TextField) eventObj).getId())) { //搜索
                     flowPane.getChildren().clear();
                     String sSEARCH=DataUtils.getValue(root,"SEARCH_I");
                     String sZDBH_U=DataUtils.getValue(root,"ZDBH_U_I");
 
                     if (false == createUnitFromDatamodel(sZDBH_U, mapDataModel.get(sZDBH_U),sSEARCH))
                         return;
-                    DataModel dataModel = null;
-                    try {
-                        dataModel = GetZDModel.exec(sZDBH_U);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    if (dataModel == null) {
-                        WarmingDialog.show(WarmingDialog.Dialog_ERR, "获取终端" + sZDBH_U + "的商品数量失败!!!");
+
+
+                    DataModel dataModel = GetLastModelFromZD.exec(sZDBH_U);
+                    if (dataModel==null)
                         return;
-                    }
+
                     setGoodsAccout(dataModel);
 
                 }
