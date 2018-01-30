@@ -42,8 +42,7 @@ public class UpdateStock implements Initializable {
     @FXML
     private TextField SEARCH_I;
 
-    @FXML
-    private ImageView image;
+
 
     public static Map<String, DataModel> mapDataModel = new HashMap();
 

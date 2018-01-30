@@ -103,19 +103,6 @@ public class QueryStatement implements Initializable {
         });
 
 
-//        DataUtils.setEnable(root, "HTRQ_U_O", false);
-//        DataUtils.setEnable(root, "HTSJ_U_O", false);
-//        DataUtils.setEnable(root, "HTLS_U_O", false);
-//        DataUtils.setEnable(root, "HTJYM__O", false);
-//        DataUtils.setEnable(root, "ZFZHLX_O", false);
-//        DataUtils.setEnable(root, "JYJE_U_O", false);
-//        DataUtils.setEnable(root, "SFDH_U_O", false);
-//        DataUtils.setEnable(root, "SHBH_U_O", false);
-//        DataUtils.setEnable(root, "CZZH_U_O", false);
-//        DataUtils.setEnable(root, "SPXX_U_O", false);
-//        DataUtils.setEnable(root, "FKM_UU_O", false);
-//        DataUtils.setEnable(root, "JYZT_U_O", false);
-
 
     }
 

@@ -1,5 +1,14 @@
 package XQBHController.ControllerUI.ControllerTranUI;
 
+import XQBHController.Controller.Com;
+import XQBHController.ControllerAPI.Com.DownloadModelFile;
+import XQBHController.ControllerAPI.UI.WarmingDialog;
+import XQBHController.ControllerUI.ControllerAPIUI.GetLastModelFromZD;
+import XQBHController.ControllerUI.ControllerUnitUI.Obj_Goods_Sell;
+import XQBHController.ControllerUI.ControllerUnitUI.Obj_Goods_Update;
+import XQBHController.Utils.Data.DataUtils;
+import XQBHController.Utils.Model.DataModel;
+import XQBHController.Utils.log.Logger;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -9,31 +18,70 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 public class ManualSell implements Initializable {
     @FXML
     private AnchorPane root;
+    @FXML
+    private FlowPane flowPane;
+
+    @FXML
+    private ComboBox ZDBH_U_I;
+    @FXML
+    private TextField SEARCH_I;
+
+
+
+    public static Map<String, DataModel> mapDataModel = new HashMap();
+
+
+    static boolean initFlg = false;
+
 
     public void initialize(URL location, ResourceBundle resources) {
 
         addListener(root, eventHandler);
 
-//        DataUtils.setEnable(root, "HTRQ_U_O", false);
-//        DataUtils.setEnable(root, "HTSJ_U_O", false);
-//        DataUtils.setEnable(root, "HTLS_U_O", false);
-//        DataUtils.setEnable(root, "HTJYM__O", false);
-//        DataUtils.setEnable(root, "ZFZHLX_O", false);
-//        DataUtils.setEnable(root, "JYJE_U_O", false);
-//        DataUtils.setEnable(root, "SFDH_U_O", false);
-//        DataUtils.setEnable(root, "SHBH_U_O", false);
-//        DataUtils.setEnable(root, "CZZH_U_O", false);
-//        DataUtils.setEnable(root, "SPXX_U_O", false);
-//        DataUtils.setEnable(root, "FKM_UU_O", false);
-//        DataUtils.setEnable(root, "JYZT_U_O", false);
+        root.widthProperty().addListener((obs, oldVal, newVal) -> {
+            // Do whatever you want
+            flowPane.setPrefWrapLength(newVal.doubleValue());
+            if (!initFlg) {
+                for (Map map :
+                        Com.listSH_ZDXX) {
+                    String sZDBH_U = map.get("ZDBH_U").toString();
+                    DataModel dataModel = GetLastModelFromZD.exec(sZDBH_U);
+                    if (dataModel == null) {
+                        Logger.log("LOG_DEBUG", sZDBH_U + "'s model is null");
+                        continue;
+                    }
+                    if (dataModel.isBuildSuccess()) {
+                        mapDataModel.put(sZDBH_U, dataModel);
+                    }else {
+                        WarmingDialog.show(WarmingDialog.Dialog_ERR,"错误的终端信息["+sZDBH_U+"]");
+                    }
+                    Logger.log("LOG_DEBUG", "put " + sZDBH_U + "'s model");
+
+                }
+
+                for (Map map :
+                        Com.listSH_ZDXX) {
+                    ZDBH_U_I.getItems().add(map.get("ZDBH_U"));
+                    Logger.log("LOG_DEBUG", "ZDBH_U_I ADD " + map.get("ZDBH_U"));
+                }
+                ZDBH_U_I.setValue(ZDBH_U_I.getItems().get(0));
+
+
+                initFlg = true;
+            }
+
+        });
 
 
     }
@@ -43,114 +91,100 @@ public class ManualSell implements Initializable {
         @Override
         public void handle(ActionEvent event) {
             Object eventObj = event.getSource();
+            if (eventObj instanceof ComboBox) {
+                if ("ZDBH_U_I".equals(((ComboBox) eventObj).getId())) {//选择终端信息时，加载本地model信息，获取终端model内容
 
-//            if (eventObj instanceof TextField) {
-//
-//                if ("ZFBDDH_I".equals(DataUtils.getID(eventObj))) {
-//                    cleanValue();
-//                    Map In = new HashMap();
-//                    Map Out = new HashMap();
-//                    In.put("CXFS_U", "z");
-//                    In.put("ZFBDDH", DataUtils.getValue(root, "ZFBDDH_I"));
-//                    if (false == ComCall.Call("ControllerSinglequery", "ControllerSinglequery", In, Out)) {
-//                        WarmingDialog.show("查询出错", Out.get("CWXX_U").toString());
-//                        return;
-//                    }
-//                    DataUtils.setValue(root, "HTRQ_U_O", Out.get("YHTRQ_").toString());
-//                    DataUtils.setValue(root, "HTSJ_U_O", Out.get("YHTSJ_").toString());
-//                    DataUtils.setValue(root, "HTLS_U_O", Out.get("YHTLS_").toString());
-//                    DataUtils.setValue(root, "HTJYM__O", Out.get("YHTJYM").toString());
-//                    String sZFZHLX = Out.get("ZFZHLX").toString();
-//                    DataUtils.setValue(root, "ZFZHLX_O", DataUtils.getListMean("ZFZHLX",sZFZHLX));
-//
-//                    DataUtils.setValue(root, "JYJE_U_O", Out.get("JYJE_U").toString());
-//                    DataUtils.setValue(root, "SFDH_U_O", Out.get("SFDH_U").toString());
-//                    DataUtils.setValue(root, "SHBH_U_O", Out.get("SHBH_U").toString());
-//                    DataUtils.setValue(root, "CZZH_U_O", Out.get("ZDBH_U").toString());
-//                    DataUtils.setValue(root, "SPXX_U_O", Out.get("SPXX_U").toString());
-//                    DataUtils.setValue(root, "FKM_UU_O", Out.get("FKM_UU").toString());
-//                    DataUtils.setValue(root, "JYZT_U_O", DataUtils.getListMean("JYZT_U",Out.get("JYZT_U").toString()));
-//
-//
-//                } else if ("WXDH_U_I".equals(DataUtils.getID(eventObj))) {
-//
-//                    cleanValue();
-//                    Map In = new HashMap();
-//                    Map Out = new HashMap();
-//                    In.put("CXFS_U", "w");
-//                    In.put("WXDH_U", DataUtils.getValue(root, "WXDH_U_I"));
-//                    if (false == ComCall.Call("ControllerSinglequery", "ControllerSinglequery", In, Out)) {
-//                        WarmingDialog.show("查询出错", Out.get("CWXX_U").toString());
-//                        return;
-//                    }
-//                    DataUtils.setValue(root, "HTRQ_U_O", Out.get("YHTRQ_").toString());
-//                    DataUtils.setValue(root, "HTSJ_U_O", Out.get("YHTSJ_").toString());
-//                    DataUtils.setValue(root, "HTLS_U_O", Out.get("YHTLS_").toString());
-//                    DataUtils.setValue(root, "HTJYM__O", Out.get("YHTJYM").toString());
-//                    String sZFZHLX = Out.get("ZFZHLX").toString();
-//                    DataUtils.setValue(root, "ZFZHLX_O", DataUtils.getListMean("ZFZHLX",sZFZHLX));
-//
-//                    DataUtils.setValue(root, "JYJE_U_O", Out.get("JYJE_U").toString());
-//                    DataUtils.setValue(root, "SFDH_U_O", Out.get("SFDH_U").toString());
-//                    DataUtils.setValue(root, "SHBH_U_O", Out.get("SHBH_U").toString());
-//                    DataUtils.setValue(root, "CZZH_U_O", Out.get("ZDBH_U").toString());
-//                    DataUtils.setValue(root, "SPXX_U_O", Out.get("SPXX_U").toString());
-//                    DataUtils.setValue(root, "FKM_UU_O", Out.get("FKM_UU").toString());
-//                    DataUtils.setValue(root, "JYZT_U_O", DataUtils.getListMean("JYZT_U",Out.get("JYZT_U").toString()));
-//                } else if ("HTLS_U_I".equals(DataUtils.getID(eventObj))) {
-//                    cleanValue();
-//                    Map In = new HashMap();
-//                    Map Out = new HashMap();
-//                    In.put("CXFS_U", "h");
-//                    String sHTRQ_U=DataUtils.getValue(root, "HTRQ_U_I");
-//                    if(sHTRQ_U.length()<=0)
-//                    {
-//                        WarmingDialog.show("查询出错", "必须选择后台日期");
-//                        return;
-//                    }
-//                    In.put("HTRQ_U", sHTRQ_U);
-//                    In.put("HTLS_U", DataUtils.getValue(root, "HTLS_U_I"));
-//                    if (false == ComCall.Call("ControllerSinglequery", "ControllerSinglequery", In, Out)) {
-//                        WarmingDialog.show("查询出错", Out.get("CWXX_U").toString());
-//                        return;
-//                    }
-//                    DataUtils.setValue(root, "HTRQ_U_O", Out.get("YHTRQ_").toString());
-//                    DataUtils.setValue(root, "HTSJ_U_O", Out.get("YHTSJ_").toString());
-//                    DataUtils.setValue(root, "HTLS_U_O", Out.get("YHTLS_").toString());
-//                    DataUtils.setValue(root, "HTJYM__O", Out.get("YHTJYM").toString());
-//                    String sZFZHLX = Out.get("ZFZHLX").toString();
-//                    DataUtils.setValue(root, "ZFZHLX_O", DataUtils.getListMean("ZFZHLX",sZFZHLX));
-//
-//                    DataUtils.setValue(root, "JYJE_U_O", Out.get("JYJE_U").toString());
-//                    DataUtils.setValue(root, "SFDH_U_O", Out.get("SFDH_U").toString());
-//                    DataUtils.setValue(root, "SHBH_U_O", Out.get("SHBH_U").toString());
-//                    DataUtils.setValue(root, "CZZH_U_O", Out.get("ZDBH_U").toString());
-//                    DataUtils.setValue(root, "SPXX_U_O", Out.get("SPXX_U").toString());
-//                    DataUtils.setValue(root, "FKM_UU_O", Out.get("FKM_UU").toString());
-//                    DataUtils.setValue(root, "JYZT_U_O", DataUtils.getListMean("JYZT_U",Out.get("JYZT_U").toString()));
-//                }
-//
-//
-//            } else if (eventObj instanceof ComboBox) {
-//                if ("CXFS_U_I".equals(DataUtils.getID(eventObj))) {
-//                    if ("支付宝单号".equals(DataUtils.getValue(root, eventObj))) {
-//                        DataUtils.setVisible(root, "HTLS_U_I", false);
-//                        DataUtils.setVisible(root, "HTRQ_U_I", false);
-//                        DataUtils.setVisible(root, "WXDH_U_I", false);
-//                        DataUtils.setVisible(root, "ZFBDDH_I", true);
-//                    } else if ("微信单号".equals(DataUtils.getValue(root, eventObj))) {
-//                        DataUtils.setVisible(root, "HTLS_U_I", false);
-//                        DataUtils.setVisible(root, "HTRQ_U_I", false);
-//                        DataUtils.setVisible(root, "WXDH_U_I", true);
-//                        DataUtils.setVisible(root, "ZFBDDH_I", false);
-//                    } else if ("后台流水".equals(DataUtils.getValue(root, eventObj))) {
-//                        DataUtils.setVisible(root, "HTLS_U_I", true);
-//                        DataUtils.setVisible(root, "HTRQ_U_I", true);
-//                        DataUtils.setVisible(root, "WXDH_U_I", false);
-//                        DataUtils.setVisible(root, "ZFBDDH_I", false);
-//                    }
-//                }
-//            }
+                    String sZDBH_U = DataUtils.getValue(root, "ZDBH_U_I");
+
+                    Logger.log("LOG_DEBUG", "createUnitFromDatamodel ZDBH_U=" + sZDBH_U);
+                    //加载本地的model文件
+                    flowPane.getChildren().clear();
+                    if (false == createUnitFromDatamodel(sZDBH_U, mapDataModel.get(sZDBH_U),""))
+                        return;
+
+
+                    //根据终端对应的IP查询终端对应的model信息
+                    String sIP = "";
+                    for (Map map :
+                            Com.listSH_ZDXX) {
+                        if (sZDBH_U.equals(map.get("ZDBH_U"))) {
+                            sIP = map.get("IP_UUU").toString();
+                            break;
+                        }
+                    }
+                    Logger.log("LOG_DEBUG", "ZDBH_U=[" + sZDBH_U + "]  IP=[" + sIP + "]");
+
+                    DataModel dataModel = GetLastModelFromZD.exec(sZDBH_U);
+                    if (dataModel==null)
+                        return;
+
+                    setGoodsAccout(dataModel);
+
+
+                }
+            } else if (eventObj instanceof Button) {
+                if ("reload".equals(((Button) eventObj).getId()))//点击重新加载时，下载终端model模型，获取终端model内容
+                {
+                    //跟终端通讯，获取datamodel 重画flowPane
+                    String sZDBH_U = DataUtils.getValue(root, "ZDBH_U_I");
+                    if (sZDBH_U.equals("")) {
+                        WarmingDialog.show(WarmingDialog.Dialog_INPUTERR, "必须选择终端");
+                        return;
+                    }
+
+
+                    try {
+                        if (true != DownloadModelFile.exec(sZDBH_U))
+                            return;
+                    } catch (Exception e) {
+                        Logger.logException("LOG_ERR", e);
+                        return;
+                    }
+
+                    flowPane.getChildren().clear();
+                    SEARCH_I.setText("");
+                    if (false == createUnitFromDatamodel(sZDBH_U, mapDataModel.get(sZDBH_U),""))
+                        return;
+
+
+                    //根据终端对应的IP查询终端对应的model信息
+                    String sIP = "";
+                    for (Map map :
+                            Com.listSH_ZDXX) {
+                        if (sZDBH_U.equals(map.get("ZDBH_U"))) {
+                            sIP = map.get("IP_UUU").toString();
+                            break;
+                        }
+                    }
+                    Logger.log("LOG_DEBUG", "ZDBH_U=[" + sZDBH_U + "]  IP=[" + sIP + "]");
+
+                    DataModel dataModel = GetLastModelFromZD.exec(sZDBH_U);
+                    if (dataModel==null)
+                        return;
+
+                    setGoodsAccout(dataModel);
+                    WarmingDialog.show(WarmingDialog.Dialog_OVER, "加载商品数据成功!!!");
+
+
+                }
+            } else if (eventObj instanceof TextField) {
+                if ("SEARCH_I".equals(((TextField) eventObj).getId())) { //搜索
+                    flowPane.getChildren().clear();
+                    String sSEARCH=DataUtils.getValue(root,"SEARCH_I");
+                    String sZDBH_U=DataUtils.getValue(root,"ZDBH_U_I");
+
+                    if (false == createUnitFromDatamodel(sZDBH_U, mapDataModel.get(sZDBH_U),sSEARCH))
+                        return;
+
+
+                    DataModel dataModel = GetLastModelFromZD.exec(sZDBH_U);
+                    if (dataModel==null)
+                        return;
+
+                    setGoodsAccout(dataModel);
+
+                }
+            }
         }
     };
 
@@ -172,19 +206,37 @@ public class ManualSell implements Initializable {
 
     }
 
-    public void cleanValue() {
-//        DataUtils.setValue(root, "HTRQ_U_O", "");
-//        DataUtils.setValue(root, "HTSJ_U_O", "");
-//        DataUtils.setValue(root, "HTLS_U_O", "");
-//        DataUtils.setValue(root, "HTJYM__O", "");
-//        DataUtils.setValue(root, "ZFZHLX_O", "");
-//        DataUtils.setValue(root, "JYJE_U_O", "");
-//        DataUtils.setValue(root, "SFDH_U_O", "");
-//        DataUtils.setValue(root, "SHBH_U_O", "");
-//        DataUtils.setValue(root, "CZZH_U_O", "");
-//        DataUtils.setValue(root, "SPXX_U_O", "");
-//        DataUtils.setValue(root, "FKM_UU_O", "");
-//        DataUtils.setValue(root, "JYZT_U_O", "");
+    public void setGoodsAccout(DataModel dataModel) {
+
+        if (dataModel.getModelType().equals("goods")) {
+            Node node = DataUtils.getTarget(flowPane, dataModel.getPosition());
+            if (node != null) {
+                DataUtils.setValue(node, "goodsNum", dataModel.getGoodsAmount() + "");
+            }
+        } else {
+            for (Map.Entry<String, DataModel> entry :
+                    dataModel.getElements().entrySet()) {
+                setGoodsAccout(entry.getValue());
+            }
+        }
+    }
+
+    public boolean createUnitFromDatamodel(String sZDBH_U, DataModel dataModel,String condition) {
+        if (dataModel == null) {
+            WarmingDialog.show(WarmingDialog.Dialog_ERR, "获取商品信息失败，请重新加载商品模型");
+            return false;
+        }
+
+        if (dataModel.getModelType().equals("goods")) {
+            if (condition.length()==0||dataModel.getPosition().contains(condition))
+                flowPane.getChildren().add(new Obj_Goods_Sell(sZDBH_U, dataModel).SP);
+        } else {
+            for (Map.Entry<String, DataModel> entry :
+                    dataModel.getElements().entrySet()) {
+                createUnitFromDatamodel(sZDBH_U, entry.getValue(),condition);
+            }
+        }
+        return true;
     }
 
 

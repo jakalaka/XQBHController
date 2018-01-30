@@ -17,28 +17,26 @@
                <children>
                   <FlowPane maxHeight="40.0" minHeight="30.0" prefHeight="30.0" prefWidth="800.0">
                      <children>
-                        <HBox>
+                        <HBox styleClass="fieldHbox">
                            <children>
-                              <AnchorPane>
-                                 <children>
-                                    <HBox fx:id="ZFBDDH_I" styleClass="fieldHbox">
-                                       <children>
-                                          <Label styleClass="fieldLabel" text="商品名称" />
-                                          <TextField />
-                                       </children>
-                                    </HBox>
-                                 </children>
-                              </AnchorPane>
+                              <Label styleClass="fieldLabel" text="终端编号" />
+                              <ComboBox fx:id="ZDBH_U_I" prefWidth="150.0" />
                            </children>
                         </HBox>
-                        <Button mnemonicParsing="false" text="刷新" />
+                        <HBox styleClass="fieldHbox">
+                           <children>
+                              <Label styleClass="fieldLabel" text="搜索条件" />
+                              <TextField fx:id="SEARCH_I" />
+                           </children>
+                        </HBox>
+                        <Button fx:id="reload" mnemonicParsing="false" text="重新加载商品模型" />
                      </children>
                   </FlowPane>
                </children>
             </VBox>
             <ScrollPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                <content>
-                  <FlowPane fx:id="flowPane" />
+                  <FlowPane fx:id="flowPane" alignment="CENTER" rowValignment="TOP" />
                </content>
             </ScrollPane>
          </children>
