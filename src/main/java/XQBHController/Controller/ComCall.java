@@ -124,7 +124,7 @@ public class ComCall {
         head.put("QTRQ_U", date[0]); //前台日期
         head.put("QTSJ_U", date[1]); //前台时间
         String sQTLS = Com.getQTLS();
-        if (sQTLS.length() != 16) {
+        if (sQTLS.length() != 20) {
             Logger.log("LOG_ERR", "流水获取失败");
             return false;
         }
@@ -135,15 +135,10 @@ public class ComCall {
         head.put("IP_UUU", Com.ControllerIP); //ip地址
 
 
-        if ("SHLogin".equals(HTJYM_)) {
-            Com.sKHDLZH = "";
-            Com.sSHBH_U = TranMapIn.get("SHBH_U").toString();
-        } else if ("KHLogin".equals(HTJYM_)) {
-            Com.sSHBH_U = "";
-            Com.sKHDLZH = TranMapIn.get("KHDLZH").toString();
-        }
+
 
         head.put("KHDLZH", Com.sKHDLZH);
+        head.put("KHBH_U", Com.sKHBH_U);
         head.put("SHBH_U", Com.sSHBH_U);
 
         XMLMapIn.put("head", head);

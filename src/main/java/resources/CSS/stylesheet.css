@@ -77,16 +77,19 @@
     -fx-padding: 10px 10px 10px 10px;
 
 }
+
 .hbox_Price {
     -fx-alignment: bottom-left;
     -fx-padding: 10px 10px 10px 10px;
 
 }
+
 .hbox_restNum {
     -fx-alignment: bottom-left;
     -fx-padding: 10px 10px -35px 10px;
 
 }
+
 .thingsImg {
     -fx-background-image: url("../img/mainbg0.jpg");
     -fx-background-size: 100% 100%;
@@ -101,6 +104,7 @@
     -fx-font-size: 17px;
     -fx-text-fill: black;
 }
+
 .buyButton_over {
     -fx-background-radius: 10px;
     -fx-border-radius: 10px;
@@ -134,12 +138,14 @@
     -fx-font-weight: 900;
     -fx-padding: 5px 5px 5px 5px;
 }
+
 .restNumLable {
     -fx-font-size: 17px;
     -fx-text-fill: black;
     -fx-font-weight: 900;
     -fx-padding: 5px 5px 5px 5px;
 }
+
 .normalPane {
     -fx-background-color: transparent;
 
@@ -184,10 +190,11 @@
     -fx-border-width: 5px;
 }
 
-.ordertitleHbox{
+.ordertitleHbox {
     -fx-alignment: center;
 }
-.orderInfo{
+
+.orderInfo {
     -fx-font-size: 17px;
     -fx-font-weight: 500;
 }
@@ -196,6 +203,7 @@
     -fx-font-size: 37px;
     -fx-font-weight: 500;
 }
+
 .warmingCancel {
     -fx-pref-height: 70px;
     -fx-pref-width: 150px;
@@ -204,16 +212,81 @@
     -fx-background-radius: 10px;
 }
 
-.functionButton{
+.functionButton {
     -fx-pref-width: 70px;
 }
-.footPane{
+
+.footPane {
     -fx-border-color: black;
     -fx-border-width: 1px 0px 0px 0px;
 }
-.fieldHbox{
-  -fx-padding: 5px;
+
+.fieldHbox {
+    -fx-padding: 5px;
 }
-.fieldLabel{
- -fx-padding: 5px;
+
+.fieldLabel {
+    -fx-padding: 5px;
+}
+
+.payModeButton {
+    -fx-pref-height: 80px;
+    -fx-pref-width: 500px;
+    -fx-min-height: 80px;
+    -fx-min-width: 500px;
+    -fx-border-color: lightgray;
+    -fx-border-radius: 10px;
+
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-color: white;
+
+    
+}
+.payModeButton:hover{
+    -fx-pref-height: 80px;
+    -fx-pref-width: 500px;
+    -fx-border-color: black;
+    -fx-border-radius: 10px;
+
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-border-color: coral;
+    -fx-border-width: 3px;
+    -fx-border-insets: 2px;
+
+}
+
+.alipayButton {
+    -fx-background-image: url("../img/alipay.png");
+
+}
+
+.wechatpayButton {
+
+    -fx-background-image: url("../img/wecharpay.png");
+
+}
+.casgpayButton {
+    -fx-background-image: url("../img/cash.png");
+
+}
+.getGoodsButton {
+    -fx-background-image: url("../img/getGoods.png");
+
+}
+.cancelButton{
+    -fx-background-color: lightgray;
+    -fx-text-fill: black;
+}
+.cancelButton:hover{
+    -fx-background-color: orangered;
+    -fx-text-fill: white;
+}
+
+.choosePaymodeHbox{
+    -fx-alignment: center;
+    -fx-padding: 1px,0px,0px,0px;
 }

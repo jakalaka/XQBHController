@@ -11,6 +11,10 @@ import java.util.Map;
 public class KHLogin {
     public static boolean exec(String sKHDLZH,String sKHMM_U,String []sMessage) {
         Logger.log("LOG_IO", Com.getIn);
+
+        Com.sSHBH_U = "";
+        Com.sKHDLZH = sKHDLZH;
+
         Map In = new HashMap();
         Map Out = new HashMap();
         long startTime = System.currentTimeMillis();
@@ -39,6 +43,7 @@ public class KHLogin {
         {
             Com.listSH_ZDXX.add(map);
         }
+        Com.sKHBH_U=Out.get("KHBH_U").toString();//将返回的客户编号写入内存
 
         Logger.log("LOG_IO", Com.getOut);
 

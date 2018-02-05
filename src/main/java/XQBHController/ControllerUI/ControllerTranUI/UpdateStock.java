@@ -2,14 +2,12 @@ package XQBHController.ControllerUI.ControllerTranUI;
 
 import XQBHController.Controller.Com;
 import XQBHController.ControllerAPI.Com.DownloadModelFile;
-import XQBHController.ControllerAPI.Com.GetZDModel;
 import XQBHController.ControllerAPI.UI.WarmingDialog;
 import XQBHController.ControllerUI.ControllerAPIUI.GetLastModelFromZD;
 import XQBHController.ControllerUI.ControllerUnitUI.Obj_Goods_Update;
 import XQBHController.Utils.Data.DataUtils;
 import XQBHController.Utils.Model.DataModel;
 import XQBHController.Utils.log.Logger;
-import com.google.gson.Gson;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -22,14 +20,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 
-import javax.swing.text.html.ImageView;
-import java.io.File;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
-
-import static XQBHController.Utils.PropertiesHandler.PropertiesReader.readKeyFromXML;
 
 public class UpdateStock implements Initializable {
     @FXML

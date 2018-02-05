@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
-import static XQBHController.Utils.PropertiesHandler.PropertiesReader.readKeyFromXML;
+import static XQBHController.Utils.PropertiesHandler.PropertiesHandler.readKeyFromXML;
 
 
 public class DataModel {

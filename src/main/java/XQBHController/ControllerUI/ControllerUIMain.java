@@ -1,7 +1,5 @@
 package XQBHController.ControllerUI;
 
-import XQBHController.Controller.Com;
-import XQBHController.Utils.QRReader.QRReader;
 import XQBHController.Utils.log.Logger;
 import javafx.application.Application;
 import javafx.event.EventHandler;
@@ -13,11 +11,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 
-import javax.annotation.Resource;
-import java.awt.*;
 import java.io.File;
-
-import static XQBHController.Utils.PropertiesHandler.PropertiesReader.readKeyFromXML;
 
 public class ControllerUIMain extends Application {
 

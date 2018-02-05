@@ -2,6 +2,7 @@ package XQBHController.ControllerUI.ControllerUnitUI;
 
 
 import XQBHController.Controller.Com;
+import XQBHController.ControllerAPI.Com.UpdateClientStock;
 import XQBHController.ControllerAPI.UI.WarmingDialog;
 import XQBHController.ControllerUI.ControllerTranUI.UpdateStock;
 import XQBHController.Utils.Data.DataUtils;
@@ -85,11 +86,11 @@ public class Goods_Update implements Initializable {
                 int dif = Integer.parseInt(newValue) -Integer.parseInt(oldGoodsAccount);
                 Logger.log("LOG_DEBUG","dif="+dif);
                 try {
-                    if (false == updateClientStock(position.getText(), dif + "")) {
+                    if (false == UpdateClientStock.exec(ZDBH_U.getText(), position.getText(), dif + "","0")) {
                         WarmingDialog.show(WarmingDialog.Dialog_ERR, "更新库存信息出错!!!");
                         DataUtils.setValue(root, "goodsNum", oldGoodsAccount);
                     }
-                } catch (IOException e) {
+                } catch (Exception e) {
                     Logger.logException("LOG_ERR", e);
                     WarmingDialog.show(WarmingDialog.Dialog_ERR, "更新库存信息出错!!!");
                     DataUtils.setValue(root, "goodsNum", oldGoodsAccount);
@@ -112,11 +113,11 @@ public class Goods_Update implements Initializable {
                 String newValue = 1 + "";
                 DataUtils.setValue(root, "goodsNum", ((Integer.parseInt(oldGoodsAccount) + 1) + ""));
                 try {
-                    if (false == updateClientStock(position.getText(), newValue)) {
+                    if (false ==UpdateClientStock.exec(ZDBH_U.getText(),position.getText(), newValue,"0")) {
                         WarmingDialog.show(WarmingDialog.Dialog_ERR, "更新库存信息出错!!!");
                         DataUtils.setValue(root, "goodsNum", oldGoodsAccount);
                     }
-                } catch (IOException e) {
+                } catch (Exception e) {
                     Logger.logException("LOG_ERR", e);
                     WarmingDialog.show(WarmingDialog.Dialog_ERR, "更新库存信息出错!!!");
                     DataUtils.setValue(root, "goodsNum", oldGoodsAccount);
@@ -135,12 +136,12 @@ public class Goods_Update implements Initializable {
                 String newValue = (-1) + "";
                 DataUtils.setValue(root, "goodsNum", ((Integer.parseInt(oldGoodsAccount) - 1) + ""));
                 try {
-                    if (false == updateClientStock(position.getText(), newValue)) {
+                    if (false == UpdateClientStock.exec(ZDBH_U.getText(),position.getText(), newValue,"0")) {
                         WarmingDialog.show(WarmingDialog.Dialog_ERR, "更新库存信息出错!!!");
                         DataUtils.setValue(root, "goodsNum", oldGoodsAccount);
                     }
 
-                } catch (IOException e) {
+                } catch (Exception e) {
                     Logger.logException("LOG_ERR", e);
                     WarmingDialog.show(WarmingDialog.Dialog_ERR, "更新库存信息出错!!!");
                     DataUtils.setValue(root, "goodsNum", oldGoodsAccount);
@@ -154,49 +155,4 @@ public class Goods_Update implements Initializable {
 
     }
 
-    private boolean updateClientStock(String sKey, String goodsAccount) throws IOException {
-        String sIP = "";
-        for (Map map:
-             Com.listSH_ZDXX) {
-            String sZDBH_U=map.get("ZDBH_U").toString();
-            if (sZDBH_U.equals(ZDBH_U.getText())) {
-                sIP = map.get("IP_UUU").toString();
-                break;
-            }
-        }
-
-        Logger.log("LOG_DEBUG", "IP=[" + sIP + "] Port=[" + 9001 + "]");
-        Socket socket = new Socket(sIP, 9001);
-//2、获取输出流，向服务器端发送信息
-        OutputStream os = socket.getOutputStream();//字节输出流
-        PrintWriter pw = new PrintWriter(os);//将输出流包装成打印流
-        Map xmlMapIn = new HashMap();
-        xmlMapIn.put("FUNCTION", "updateClientStock");
-        xmlMapIn.put("position", sKey);
-        xmlMapIn.put("goodsAccount", goodsAccount);
-
-        String sXmlIn = XmlUtils.map2XML(xmlMapIn);
-        pw.write(sXmlIn);
-        pw.flush();
-        socket.shutdownOutput();
-//3、获取输入流，并读取服务器端的响应信息
-        InputStream is = socket.getInputStream();
-        BufferedReader br = new BufferedReader(new InputStreamReader(is));
-
-        String info = null;
-        info = br.readLine();
-
-        //4、关闭资源
-        br.close();
-        is.close();
-        pw.close();
-        os.close();
-        socket.close();
-        Logger.log("LOG_DEBUG",info);
-        Map mapOut = XmlUtils.XML2map(info);
-        if (!"AAAAAA".equals(mapOut.get("CWDM_U")))
-            return false;
-
-        return true;
-    }
 }

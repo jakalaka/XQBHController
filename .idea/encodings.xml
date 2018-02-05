@@ -14,11 +14,9 @@
     <file url="file://$PROJECT_DIR$/src/main/java/XQBHController/ControllerUI/Controller.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/XQBHController/ControllerUI/ControllerAPIUI/OrderDialogController.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/XQBHController/ControllerUI/ControllerUIMain.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/XQBHController/ControllerUI/MyModel.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/XQBHController/Utils/FinishComListener/FinishComListener.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/XQBHController/Utils/Modbus/ModbusUtil.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/XQBHController/Utils/Model/modelHelper.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/main/java/XQBHController/Utils/PropertiesHandler/PropertiesReader.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/XQBHController/Utils/PropertiesHandler/PropertiesHandler.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/XQBHController/Utils/QRReader/QRReader.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/XQBHController/Utils/Updater/AutoUpdateMain.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/XQBHController/Utils/Updater/AutoUpdateMainPro.java" charset="GBK" />

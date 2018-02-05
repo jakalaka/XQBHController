@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-border-color: darkgray; -fx-border-radius: 5px; -fx-border-width: 2px;" stylesheets="@../../../resources/CSS/stylesheet.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="XQBHController.ControllerUI.ControllerUnitUI.ChoosePayMode">
+   <children>
+      <GridPane style="-fx-background-color: white;">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" />
+            <ColumnConstraints hgrow="SOMETIMES" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="30.0" minWidth="0.0" prefWidth="30.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2">
+               <children>
+                  <Button fx:id="cancel" cancelButton="true" mnemonicParsing="false" styleClass="cancelButton" text="X" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="请选择...">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </GridPane>
+      <HBox styleClass="choosePaymodeHbox">
+         <children>
+            <Button fx:id="getGoods" mnemonicParsing="false">
+               <styleClass>
+                  <String fx:value="payModeButton" />
+                  <String fx:value="getGoodsButton" />
+               </styleClass>
+            </Button>
+         </children>
+      </HBox>
+      <HBox styleClass="choosePaymodeHbox">
+         <children>
+            <Button fx:id="AliPay" mnemonicParsing="false">
+               <styleClass>
+                  <String fx:value="payModeButton" />
+                  <String fx:value="alipayButton" />
+               </styleClass>
+            </Button>
+         </children>
+      </HBox>
+      <HBox styleClass="choosePaymodeHbox">
+         <children>
+            <Button fx:id="WechatPay" mnemonicParsing="false">
+               <styleClass>
+                  <String fx:value="payModeButton" />
+                  <String fx:value="wechatpayButton" />
+               </styleClass>
+            </Button>
+         </children>
+      </HBox>
+      <HBox styleClass="choosePaymodeHbox">
+         <children>
+            <Button fx:id="cashPay" mnemonicParsing="false">
+               <styleClass>
+                  <String fx:value="payModeButton" />
+                  <String fx:value="casgpayButton" />
+               </styleClass>
+            </Button>
+         </children>
+      </HBox>
+   </children>
+</VBox>

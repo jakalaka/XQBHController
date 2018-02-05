@@ -11,6 +11,11 @@ import java.util.Map;
 public class SHLogin {
     public static boolean exec(String sSHBH_U,String sSHMM_U,String []sMessage) {
         Logger.log("LOG_IO", Com.getIn);
+
+        Com.sKHDLZH = "";
+        Com.sKHBH_U = "";
+        Com.sSHBH_U = sSHBH_U;
+
         Map In = new HashMap();
         Map Out = new HashMap();
         long startTime = System.currentTimeMillis();
@@ -43,8 +48,7 @@ public class SHLogin {
             Com.listSH_ZDXX.add(map);
         }
 
-        Map map=new HashMap();
-        map.put("SHBH_U",sSHBH_U);
+
 
 
         Logger.log("LOG_IO", Com.getOut);

@@ -46,7 +46,7 @@
                   </FlowPane>
                </children>
             </VBox>
-            <ScrollPane GridPane.rowIndex="1">
+            <ScrollPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                <content>
                   <FlowPane fx:id="flowPane" alignment="CENTER" hgap="10.0" nodeOrientation="LEFT_TO_RIGHT" rowValignment="TOP" vgap="10.0">
                      <padding>

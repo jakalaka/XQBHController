@@ -62,23 +62,23 @@ public class QueryTran implements Initializable {
                     In.put("CXFS_U", "z");
                     In.put("ZFBDDH", DataUtils.getValue(root, "ZFBDDH_I"));
                     if (false == ComCall.Call("ControllerSingleQuery", "ControllerSingleQuery", In, Out)) {
-                        WarmingDialog.show(WarmingDialog.Dialog_ERR, Out.get("CWXX_U").toString());
+                        WarmingDialog.show(WarmingDialog.Dialog_ERR, DataUtils.getValue(Out, "CWXX_U"));
                         return;
                     }
-                    DataUtils.setValue(root, "HTRQ_U_O", Out.get("YHTRQ_").toString());
-                    DataUtils.setValue(root, "HTSJ_U_O", Out.get("YHTSJ_").toString());
-                    DataUtils.setValue(root, "HTLS_U_O", Out.get("YHTLS_").toString());
-                    DataUtils.setValue(root, "HTJYM__O", Out.get("YHTJYM").toString());
-                    String sZFZHLX = Out.get("ZFZHLX").toString();
-                    DataUtils.setValue(root, "ZFZHLX_O", DataUtils.getListMean("ZFZHLX",sZFZHLX));
+                    DataUtils.setValue(root, "HTRQ_U_O", DataUtils.getValue(Out, "YHTRQ_"));
+                    DataUtils.setValue(root, "HTSJ_U_O", DataUtils.getValue(Out, "YHTSJ_"));
+                    DataUtils.setValue(root, "HTLS_U_O", DataUtils.getValue(Out, "YHTLS_"));
+                    DataUtils.setValue(root, "HTJYM__O", DataUtils.getValue(Out, "YHTJYM"));
+                    String sZFZHLX = DataUtils.getValue(Out, "ZFZHLX");
+                    DataUtils.setValue(root, "ZFZHLX_O", DataUtils.getListMean("ZFZHLX", sZFZHLX));
 
-                    DataUtils.setValue(root, "JYJE_U_O", Out.get("JYJE_U").toString());
-                    DataUtils.setValue(root, "SFDH_U_O", Out.get("SFDH_U").toString());
-                    DataUtils.setValue(root, "SHBH_U_O", Out.get("SHBH_U").toString());
-                    DataUtils.setValue(root, "CZZH_U_O", Out.get("ZDBH_U").toString());
-                    DataUtils.setValue(root, "SPXX_U_O", Out.get("SPXX_U").toString());
-                    DataUtils.setValue(root, "FKM_UU_O", Out.get("FKM_UU").toString());
-                    DataUtils.setValue(root, "JYZT_U_O", DataUtils.getListMean("JYZT_U",Out.get("JYZT_U").toString()));
+                    DataUtils.setValue(root, "JYJE_U_O", DataUtils.getValue(Out, "JYJE_U"));
+                    DataUtils.setValue(root, "SFDH_U_O", DataUtils.getValue(Out, "SFDH_U"));
+                    DataUtils.setValue(root, "SHBH_U_O", DataUtils.getValue(Out, "SHBH_U"));
+                    DataUtils.setValue(root, "CZZH_U_O", DataUtils.getValue(Out, "ZDBH_U"));
+                    DataUtils.setValue(root, "SPXX_U_O", DataUtils.getValue(Out, "SPXX_U"));
+                    DataUtils.setValue(root, "FKM_UU_O", DataUtils.getValue(Out, "FKM_UU"));
+                    DataUtils.setValue(root, "JYZT_U_O", DataUtils.getListMean("JYZT_U", DataUtils.getValue(Out, "JYZT_U")));
 
 
                 } else if ("WXDH_U_I".equals(((TextField) eventObj).getId())) {
@@ -89,54 +89,53 @@ public class QueryTran implements Initializable {
                     In.put("CXFS_U", "w");
                     In.put("WXDH_U", DataUtils.getValue(root, "WXDH_U_I"));
                     if (false == ComCall.Call("ControllerSingleQuery", "ControllerSingleQuery", In, Out)) {
-                        WarmingDialog.show(WarmingDialog.Dialog_ERR, Out.get("CWXX_U").toString());
+                        WarmingDialog.show(WarmingDialog.Dialog_ERR, DataUtils.getValue(Out, "CWXX_U"));
                         return;
                     }
-                    DataUtils.setValue(root, "HTRQ_U_O", Out.get("YHTRQ_").toString());
-                    DataUtils.setValue(root, "HTSJ_U_O", Out.get("YHTSJ_").toString());
-                    DataUtils.setValue(root, "HTLS_U_O", Out.get("YHTLS_").toString());
-                    DataUtils.setValue(root, "HTJYM__O", Out.get("YHTJYM").toString());
-                    String sZFZHLX = Out.get("ZFZHLX").toString();
-                    DataUtils.setValue(root, "ZFZHLX_O", DataUtils.getListMean("ZFZHLX",sZFZHLX));
+                    DataUtils.setValue(root, "HTRQ_U_O", DataUtils.getValue(Out, "YHTRQ_"));
+                    DataUtils.setValue(root, "HTSJ_U_O", DataUtils.getValue(Out, "YHTSJ_"));
+                    DataUtils.setValue(root, "HTLS_U_O", DataUtils.getValue(Out, "YHTLS_"));
+                    DataUtils.setValue(root, "HTJYM__O", DataUtils.getValue(Out, "YHTJYM"));
+                    String sZFZHLX = DataUtils.getValue(Out, "ZFZHLX");
+                    DataUtils.setValue(root, "ZFZHLX_O", DataUtils.getListMean("ZFZHLX", sZFZHLX));
 
-                    DataUtils.setValue(root, "JYJE_U_O", Out.get("JYJE_U").toString());
-                    DataUtils.setValue(root, "SFDH_U_O", Out.get("SFDH_U").toString());
-                    DataUtils.setValue(root, "SHBH_U_O", Out.get("SHBH_U").toString());
-                    DataUtils.setValue(root, "CZZH_U_O", Out.get("ZDBH_U").toString());
-                    DataUtils.setValue(root, "SPXX_U_O", Out.get("SPXX_U").toString());
-                    DataUtils.setValue(root, "FKM_UU_O", Out.get("FKM_UU").toString());
-                    DataUtils.setValue(root, "JYZT_U_O", DataUtils.getListMean("JYZT_U",Out.get("JYZT_U").toString()));
+                    DataUtils.setValue(root, "JYJE_U_O", DataUtils.getValue(Out, "JYJE_U"));
+                    DataUtils.setValue(root, "SFDH_U_O", DataUtils.getValue(Out, "SFDH_U"));
+                    DataUtils.setValue(root, "SHBH_U_O", DataUtils.getValue(Out, "SHBH_U"));
+                    DataUtils.setValue(root, "CZZH_U_O", DataUtils.getValue(Out, "ZDBH_U"));
+                    DataUtils.setValue(root, "SPXX_U_O", DataUtils.getValue(Out, "SPXX_U"));
+                    DataUtils.setValue(root, "FKM_UU_O", DataUtils.getValue(Out, "FKM_UU"));
+                    DataUtils.setValue(root, "JYZT_U_O", DataUtils.getListMean("JYZT_U", DataUtils.getValue(Out, "JYZT_U")));
                 } else if ("HTLS_U_I".equals(((TextField) eventObj).getId())) {
                     cleanValue();
                     Map In = new HashMap();
                     Map Out = new HashMap();
                     In.put("CXFS_U", "h");
-                    String sHTRQ_U=DataUtils.getValue(root, "HTRQ_U_I");
-                    if(sHTRQ_U.length()<=0)
-                    {
+                    String sHTRQ_U = DataUtils.getValue(root, "HTRQ_U_I");
+                    if (sHTRQ_U.length() <= 0) {
                         WarmingDialog.show(WarmingDialog.Dialog_INPUTERR, "必须选择后台日期");
                         return;
                     }
                     In.put("HTRQ_U", sHTRQ_U);
                     In.put("HTLS_U", DataUtils.getValue(root, "HTLS_U_I"));
                     if (false == ComCall.Call("ControllerSingleQuery", "ControllerSingleQuery", In, Out)) {
-                        WarmingDialog.show(WarmingDialog.Dialog_ERR, Out.get("CWXX_U").toString());
+                        WarmingDialog.show(WarmingDialog.Dialog_ERR, DataUtils.getValue(Out, "CWXX_U"));
                         return;
                     }
-                    DataUtils.setValue(root, "HTRQ_U_O", Out.get("YHTRQ_").toString());
-                    DataUtils.setValue(root, "HTSJ_U_O", Out.get("YHTSJ_").toString());
-                    DataUtils.setValue(root, "HTLS_U_O", Out.get("YHTLS_").toString());
-                    DataUtils.setValue(root, "HTJYM__O", Out.get("YHTJYM").toString());
-                    String sZFZHLX = Out.get("ZFZHLX").toString();
-                    DataUtils.setValue(root, "ZFZHLX_O", DataUtils.getListMean("ZFZHLX",sZFZHLX));
+                    DataUtils.setValue(root, "HTRQ_U_O", DataUtils.getValue(Out, "YHTRQ_"));
+                    DataUtils.setValue(root, "HTSJ_U_O", DataUtils.getValue(Out, "YHTSJ_"));
+                    DataUtils.setValue(root, "HTLS_U_O", DataUtils.getValue(Out, "YHTLS_"));
+                    DataUtils.setValue(root, "HTJYM__O", DataUtils.getValue(Out, "YHTJYM"));
+                    String sZFZHLX = DataUtils.getValue(Out, "ZFZHLX");
+                    DataUtils.setValue(root, "ZFZHLX_O", DataUtils.getListMean("ZFZHLX", sZFZHLX));
 
-                    DataUtils.setValue(root, "JYJE_U_O", Out.get("JYJE_U").toString());
-                    DataUtils.setValue(root, "SFDH_U_O", Out.get("SFDH_U").toString());
-                    DataUtils.setValue(root, "SHBH_U_O", Out.get("SHBH_U").toString());
-                    DataUtils.setValue(root, "CZZH_U_O", Out.get("ZDBH_U").toString());
-                    DataUtils.setValue(root, "SPXX_U_O", Out.get("SPXX_U").toString());
-                    DataUtils.setValue(root, "FKM_UU_O", Out.get("FKM_UU").toString());
-                    DataUtils.setValue(root, "JYZT_U_O", DataUtils.getListMean("JYZT_U",Out.get("JYZT_U").toString()));
+                    DataUtils.setValue(root, "JYJE_U_O", DataUtils.getValue(Out, "JYJE_U"));
+                    DataUtils.setValue(root, "SFDH_U_O", DataUtils.getValue(Out, "SFDH_U"));
+                    DataUtils.setValue(root, "SHBH_U_O", DataUtils.getValue(Out, "SHBH_U"));
+                    DataUtils.setValue(root, "CZZH_U_O", DataUtils.getValue(Out, "ZDBH_U"));
+                    DataUtils.setValue(root, "SPXX_U_O", DataUtils.getValue(Out, "SPXX_U"));
+                    DataUtils.setValue(root, "FKM_UU_O", DataUtils.getValue(Out, "FKM_UU"));
+                    DataUtils.setValue(root, "JYZT_U_O", DataUtils.getListMean("JYZT_U", DataUtils.getValue(Out, "JYZT_U")));
                 }
 
 

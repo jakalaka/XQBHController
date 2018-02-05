@@ -67,10 +67,10 @@ public class QueryStatement implements Initializable {
             }
             if (!initFlg) {
                 //加载商户信息和终端信息
-                if (Com.listSH_ZDXX.size() > 1) {
+//                if (Com.listSH_ZDXX.size() > 1) {
                     ZDBH_U_I.getItems().add("");
                     Logger.log("LOG_DEBUG", "ZDBH_U_I ADD \"\"");
-                }
+//                }
                 for (Map map :
                         Com.listSH_ZDXX) {
                     ZDBH_U_I.getItems().add(map.get("ZDBH_U"));
@@ -79,10 +79,10 @@ public class QueryStatement implements Initializable {
                 ZDBH_U_I.setValue(ZDBH_U_I.getItems().get(0));
 
 
-                if (Com.listKH_SHXX.size() > 1) {
+//                if (Com.listKH_SHXX.size() > 1) {
                     Logger.log("LOG_DEBUG", "SHBH_U_I ADD \"\"");
                     SHBH_U_I.getItems().add("");
-                }
+//                }
                 for (Map map :
                         Com.listKH_SHXX) {
                     SHBH_U_I.getItems().add(map.get("SHBH_U"));

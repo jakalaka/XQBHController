@@ -7,7 +7,7 @@ import XQBHController.Utils.log.Logger;
 
 import java.io.*;
 
-import static XQBHController.Utils.PropertiesHandler.PropertiesReader.readKeyFromXML;
+import static XQBHController.Utils.PropertiesHandler.PropertiesHandler.readKeyFromXML;
 
 /**
  * Created by Administrator on 2017/7/1 0001.

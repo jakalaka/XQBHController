@@ -85,6 +85,7 @@
                                        <String fx:value="" />
                                        <String fx:value="支付宝" />
                                        <String fx:value="微信" />
+                                       <String fx:value="现金" />
                                     </FXCollections>
                                  </items>
                               </ComboBox>
