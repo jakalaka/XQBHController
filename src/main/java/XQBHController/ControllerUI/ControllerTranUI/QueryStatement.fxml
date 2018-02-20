@@ -104,8 +104,9 @@
                            <children>
                               <TableView fx:id="tableView" editable="true">
                                 <columns>
-                                  <TableColumn fx:id="HTRQ_U_GRD_O" minWidth="-1.0" onEditCommit="#commitHandler" prefWidth="75.0" text="后台日期" />
-                                  <TableColumn fx:id="HTSJ_U_GRD_O" onEditCommit="#commitHandler" prefWidth="75.0" text="后台时间" />
+                                  <TableColumn fx:id="XH_UUU_GRD_O" minWidth="-1.0" onEditCommit="#commitHandler" prefWidth="75.0" text="序号" />
+                                   <TableColumn fx:id="HTRQ_U_GRD_O" onEditCommit="#commitHandler" prefWidth="75.0" text="后台日期" />
+                                   <TableColumn fx:id="HTSJ_U_GRD_O" onEditCommit="#commitHandler" prefWidth="75.0" text="后台时间" />
                                     <TableColumn fx:id="HTLS_U_GRD_O" onEditCommit="#commitHandler" prefWidth="75.0" text="后台流水" />
                                     <TableColumn fx:id="JYJE_U_GRD_O" onEditCommit="#commitHandler" prefWidth="75.0" text="交易金额" />
                                     <TableColumn fx:id="ZFZHLX_GRD_O" onEditCommit="#commitHandler" prefWidth="75.0" text="支付方式" />

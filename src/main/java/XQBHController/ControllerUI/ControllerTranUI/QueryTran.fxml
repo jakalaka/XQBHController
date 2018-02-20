@@ -155,7 +155,8 @@
                         <TextField fx:id="JYZT_U_O" />
                      </children>
                   </HBox>
-                  <Button mnemonicParsing="false" text="退货" />
+                  <Button fx:id="refund" mnemonicParsing="false" text="退货" />
+
                </children>
             </FlowPane>
          </children>

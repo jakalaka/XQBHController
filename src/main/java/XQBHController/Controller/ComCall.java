@@ -42,8 +42,8 @@ public class ComCall {
         Logger.log("LOG_DEBUG", "XMLIn=" + XMLIn);
 
 
-        String IP = "192.168.31.62";
-//        String IP="newfangledstore.com";
+//        String IP = "192.168.31.62";
+        String IP="newfangledstore.com";
 
         int port = 9000;
         String XMLOut = "";

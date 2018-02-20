@@ -1,7 +1,6 @@
 package XQBHController.ControllerAPI.UI;
 
 import XQBHController.ControllerUI.ControllerAPIUI.ComCartoonController;
-import XQBHController.ControllerUI.ControllerAPIUI.OrderDialogController;
 import XQBHController.Utils.log.Logger;
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
@@ -39,7 +38,7 @@ public class ComCartoon {
         comCartoonStage.setScene(scene);
         scene.setFill(Color.TRANSPARENT);
         comCartoonStage.initStyle(StageStyle.TRANSPARENT);
-        comCartoonStage.initOwner(OrderDialogController.orderDialogstage);
+//        comCartoonStage.initOwner(OrderDialogController.orderDialogstage);
         comCartoonStage.setAlwaysOnTop(true);
 
     }

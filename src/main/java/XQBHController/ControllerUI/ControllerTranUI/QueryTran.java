@@ -1,8 +1,10 @@
 package XQBHController.ControllerUI.ControllerTranUI;
 
 import XQBHController.Controller.ComCall;
+import XQBHController.ControllerAPI.Com.ComRefund;
 import XQBHController.ControllerAPI.UI.WarmingDialog;
 import XQBHController.Utils.Data.DataUtils;
+import XQBHController.Utils.log.Logger;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -157,6 +159,19 @@ public class QueryTran implements Initializable {
                         DataUtils.setVisible(root, "HB_WXDH_U_I", false);
                         DataUtils.setVisible(root, "HB_ZFBDDH_I", false);
                     }
+                }
+            } else if (eventObj instanceof Button) {
+                if ("refund".equals(((Button) eventObj).getId()))//ÍË»õ°´Å¥
+                {
+                    Logger.log("LOG_DEBUG", "click refund");
+                    String resoult = ComRefund.exec(DataUtils.getValue(root, "HTRQ_U_O"), DataUtils.getValue(root, "HTLS_U_O"), DataUtils.getValue(root, "JYJE_U_O"));
+                    if (!"SUCEESS".equals(resoult)) {
+                        WarmingDialog.show(WarmingDialog.Dialog_ERR, resoult);
+                    }else {
+                        Logger.log("LOG_DEBUG","refund success");
+                    }
+
+
                 }
             }
         }

@@ -13,6 +13,7 @@ import java.util.Map;
 public class UpdateClientStock {
     public static boolean exec(String ZDBH_U,String sKey, String goodsAccount,String checkPass) throws IOException {
         String sIP = "";
+        int iPort=0;
         for (Map map:
                 Com.listSH_ZDXX) {
             String sZDBH_U=map.get("ZDBH_U").toString();
@@ -21,9 +22,11 @@ public class UpdateClientStock {
                 break;
             }
         }
+        iPort=Integer.parseInt(sIP.split(":")[1]);
+        sIP=sIP.split(":")[0];
 
-        Logger.log("LOG_DEBUG", "IP=[" + sIP + "] Port=[" + 9001 + "]");
-        Socket socket = new Socket(sIP, 9001);
+        Logger.log("LOG_DEBUG", "IP=[" + sIP + "] Port=[" + iPort + "]");
+        Socket socket = new Socket(sIP, iPort);
 
 
 
@@ -53,6 +56,7 @@ public class UpdateClientStock {
         pw.close();
         os.close();
         socket.close();
+        Logger.log("LOG_DEBUG","info="+info);
         Map mapOut = XmlUtils.XML2map(info);
         Logger.log("LOG_DEBUG",mapOut.get("CWDM_U").toString());
         if (!"AAAAAA".equals(mapOut.get("CWDM_U")))

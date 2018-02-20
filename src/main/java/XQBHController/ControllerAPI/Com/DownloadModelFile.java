@@ -20,6 +20,7 @@ import static XQBHController.Controller.Com.modelZipFile;
 public class DownloadModelFile {
     public static boolean exec(String sZDBH_U) throws Exception {
         String sIP = "";
+        int iPort=0;
         for (Map map :
                 Com.listSH_ZDXX) {
             if (sZDBH_U.equals(map.get("ZDBH_U"))) {
@@ -31,10 +32,14 @@ public class DownloadModelFile {
             WarmingDialog.show(WarmingDialog.Dialog_ERR, "终端未登录找不到对应终端信息");
             return false;
         }
+        iPort=Integer.parseInt(sIP.split(":")[1]);
+        sIP=sIP.split(":")[0];
+
+
 //客户端
 //1、创建客户端Socket，指定服务器地址和端口
-        Logger.log("LOG_DEBUG", "IP=[" + sIP + "] Port=[" + 9001 + "]");
-        Socket socket = new Socket(sIP, 9001);
+        Logger.log("LOG_DEBUG", "IP=[" + sIP + "] Port=[" + iPort + "]");
+        Socket socket = new Socket(sIP, iPort);
 //2、获取输出流，向服务器端发送信息
         OutputStream os = socket.getOutputStream();//字节输出流
         PrintWriter pw = new PrintWriter(os);//将输出流包装成打印流

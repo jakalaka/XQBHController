@@ -221,6 +221,13 @@ public class ManualSell implements Initializable {
         }
     }
 
+    /**
+     * @param sZDBH_U  终端编号
+     * @param dataModel  根模型
+     * @param condition 过滤条件
+     * @return
+     * 加载本地文件
+     */
     public boolean createUnitFromDatamodel(String sZDBH_U, DataModel dataModel,String condition) {
         if (dataModel == null) {
             WarmingDialog.show(WarmingDialog.Dialog_ERR, "获取商品信息失败，请重新加载商品模型");
