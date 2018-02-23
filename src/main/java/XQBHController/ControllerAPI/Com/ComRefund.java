@@ -11,18 +11,21 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ComRefund {
-    public static String exec(String sHTRQ_U,String sHTLS_U,String sJYJE_U) {
+    public static String exec(String sZFZHLX,String sYHTRQ_,String sYHTLS_,String sTHJYJE) {
         Logger.log("LOG_IO", Com.getIn);
         Map In = new HashMap();
         Map Out = new HashMap();
         long startTime = System.currentTimeMillis();
-        In.put("HTRQ_U", sHTRQ_U);
-        In.put("HTLS_U", sHTLS_U);
-        In.put("JYJE_U", sJYJE_U);
+        In.put("ZFZHLX", sZFZHLX);
+        In.put("YHTRQ_", sYHTRQ_);
+        In.put("YHTLS_", sYHTLS_);
+        In.put("THJYJE", sTHJYJE);
 
-        Logger.log("LOG_DEBUG", "sHTRQ_U=" + sHTRQ_U);
-        Logger.log("LOG_DEBUG", "sHTLS_U=" + sHTLS_U);
-        Logger.log("LOG_DEBUG", "sJYJE_U=" + sJYJE_U);
+
+        Logger.log("LOG_DEBUG", "sZFZHLX=" + sZFZHLX);
+        Logger.log("LOG_DEBUG", "sYHTRQ_=" + sYHTRQ_);
+        Logger.log("LOG_DEBUG", "sYHTLS_=" + sYHTLS_);
+        Logger.log("LOG_DEBUG", "sTHJYJE=" + sTHJYJE);
 
 
         if (false == ComCall.Call("ComRefund", "ControllerRefund", In, Out)) {

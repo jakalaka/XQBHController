@@ -45,11 +45,23 @@ public class QueryStatement implements Initializable {
     private DatePicker QSRQ_U_I;
     @FXML
     private DatePicker ZZRQ_U_I;
+    @FXML
+    private CheckBox cb_all;
+    @FXML
+    private CheckBox cb_1;
+    @FXML
+    private CheckBox cb_w;
+    @FXML
+    private CheckBox cb_c;
+    @FXML
+    private CheckBox cb_t;
+    @FXML
+    private CheckBox cb_b;
+    @FXML
+    private CheckBox cb_u;
 
 
     static boolean initFlg = false;
-
-
 
 
     public void initialize(URL location, ResourceBundle resources) {
@@ -58,18 +70,27 @@ public class QueryStatement implements Initializable {
 
         root.widthProperty().addListener((obs, oldVal, newVal) -> {
             // Do whatever you want
-            double colminWidth = 75;
+            double xhWidth=35;
+            double perfcolWidth = 75;
             List<TableColumn> list = tableView.getColumns();
-            BigDecimal aa = new BigDecimal(list.size());
-            BigDecimal bb = new BigDecimal(newVal.floatValue());
-            BigDecimal cc = bb.divide(aa, 2, BigDecimal.ROUND_HALF_UP);
-            if (cc.doubleValue() > colminWidth) {
-                for (TableColumn tableColumn : list) {
-                    tableColumn.setPrefWidth(cc.doubleValue());
+            BigDecimal tableColNum = new BigDecimal(list.size());
+            BigDecimal windowWidth = new BigDecimal(newVal.floatValue()).subtract(new BigDecimal(xhWidth));
+            BigDecimal actcolWidth = windowWidth.divide(tableColNum.subtract(new BigDecimal(1)), 2, BigDecimal.ROUND_HALF_UP);
+            list.get(0).setPrefWidth(xhWidth);
+            if (actcolWidth.doubleValue() > perfcolWidth) {
+//                for (TableColumn tableColumn : list) {
+//
+//                    tableColumn.setPrefWidth(actcolWidth.doubleValue());
+//                }
+                for (int i =1;i<list.size();i++)
+                {
+                    list.get(i).setPrefWidth(actcolWidth.doubleValue());
                 }
             } else {
-                for (TableColumn tableColumn : list) {
-                    tableColumn.setPrefWidth(colminWidth);
+
+                for (int i =1;i<list.size();i++)
+                {
+                    list.get(i).setPrefWidth(perfcolWidth);
                 }
             }
             if (!initFlg) {
@@ -80,8 +101,8 @@ public class QueryStatement implements Initializable {
 //                }
                 for (Map map :
                         Com.listSH_ZDXX) {
-                    ZDBH_U_I.getItems().add(map.get("ZDBH_U"));
-                    Logger.log("LOG_DEBUG", "ZDBH_U_I ADD " + map.get("ZDBH_U"));
+                    ZDBH_U_I.getItems().add(DataUtils.getValue(map,"ZDBH_U"));
+                    Logger.log("LOG_DEBUG", "ZDBH_U_I ADD " + DataUtils.getValue(map,"ZDBH_U"));
                 }
                 ZDBH_U_I.setValue(ZDBH_U_I.getItems().get(0));
 
@@ -92,8 +113,8 @@ public class QueryStatement implements Initializable {
 //                }
                 for (Map map :
                         Com.listKH_SHXX) {
-                    SHBH_U_I.getItems().add(map.get("SHBH_U"));
-                    Logger.log("LOG_DEBUG", "SHBH_U_I ADD " + map.get("SHBH_U"));
+                    SHBH_U_I.getItems().add(DataUtils.getValue(map,"SHBH_U"));
+                    Logger.log("LOG_DEBUG", "SHBH_U_I ADD " + DataUtils.getValue(map,"SHBH_U"));
 
                 }
                 SHBH_U_I.setValue(SHBH_U_I.getItems().get(0));
@@ -136,7 +157,28 @@ public class QueryStatement implements Initializable {
                     Map Out = new HashMap();
                     In.put("QSRQ_U", sQSRQ_U);
                     In.put("ZZRQ_U", sZZRQ_U);
-                    In.put("JYZT_U", DataUtils.getListValue("JYZT_U", DataUtils.getValue(root, "JYZT_U_I")));
+//                    In.put("JYZT_U", DataUtils.getListValue("JYZT_U", DataUtils.getValue(root, "JYZT_U_I")));
+                    String sJYZT_U = "";
+                    if (cb_1.isSelected())
+                        sJYZT_U += "1,";
+                    if (cb_w.isSelected())
+                        sJYZT_U += "w,";
+                    if (cb_c.isSelected())
+                        sJYZT_U += "c,";
+                    if (cb_t.isSelected())
+                        sJYZT_U += "t,";
+                    if (cb_b.isSelected())
+                        sJYZT_U += "b,";
+                    if (cb_u.isSelected())
+                        sJYZT_U += "u,";
+                    if (sJYZT_U.equals("")) {
+                        WarmingDialog.show(WarmingDialog.Dialog_INPUTERR, "必须选择交易状态");
+                        return;
+                    }
+                    sJYZT_U = sJYZT_U.substring(0, sJYZT_U.length() - 1);
+                    In.put("JYZT_U", sJYZT_U);
+
+
                     In.put("SHBH_U", DataUtils.getValue(root, "SHBH_U_I"));
                     In.put("ZDBH_U", DataUtils.getValue(root, "ZDBH_U_I"));
                     In.put("ZFZHLX", DataUtils.getListValue("ZFZHLX", DataUtils.getValue(root, "ZFZHLX_I")));
@@ -153,7 +195,21 @@ public class QueryStatement implements Initializable {
                     for (Map map :
                             listResoult) {
                         iNum++;
-                        data.add(new tableInfo(iNum + "", map.get("HTRQ_U").toString(), map.get("HTSJ_U").toString(), map.get("HTLS_U").toString(), map.get("JYJE_U").toString(), DataUtils.getListMean("ZFZHLX", map.get("ZFZHLX").toString()), map.get("SFDH_U").toString(), map.get("KHBH_U").toString(), map.get("SHBH_U").toString(), map.get("ZDBH_U").toString(), map.get("SPXX_U").toString(), DataUtils.getListMean("JYZT_U", map.get("JYZT_U").toString())));
+                        data.add(new tableInfo(iNum + "",
+                                DataUtils.getValue(map,"HTRQ_U"),
+                                DataUtils.getValue(map,"HTSJ_U"),
+                                DataUtils.getValue(map,"HTLS_U"),
+                                DataUtils.getValue(map, "JYJE_U"),
+                                DataUtils.getListMean("ZFZHLX", DataUtils.getValue(map, "ZFZHLX")),
+                                DataUtils.getValue(map, "SFDH_U"),
+                                DataUtils.getValue(map, "KHBH_U"),
+                                DataUtils.getValue(map, "SHBH_U"),
+                                DataUtils.getValue(map, "ZDBH_U"),
+                                DataUtils.getValue(map, "SPXX_U"),
+                                DataUtils.getListMean("JYZT_U", DataUtils.getValue(map, "JYZT_U")),
+                                DataUtils.getValue(map, "YTHJE_"),
+                                DataUtils.getValue(map, "YHTRQ_"),
+                                DataUtils.getValue(map, "YHTLS_")));
                     }
                     Logger.log("LOG_DEBUG", "iNum=" + iNum);
 
@@ -181,12 +237,17 @@ public class QueryStatement implements Initializable {
                     ((TableColumn) tableView.getColumns().get(10)).setCellFactory(TextFieldTableCell.forTableColumn());
                     ((TableColumn) tableView.getColumns().get(11)).setCellValueFactory(new PropertyValueFactory<>("JYZT_U_O"));
                     ((TableColumn) tableView.getColumns().get(11)).setCellFactory(TextFieldTableCell.forTableColumn());
+                    ((TableColumn) tableView.getColumns().get(12)).setCellValueFactory(new PropertyValueFactory<>("YTHJE__O"));
+                    ((TableColumn) tableView.getColumns().get(12)).setCellFactory(TextFieldTableCell.forTableColumn());
+                    ((TableColumn) tableView.getColumns().get(13)).setCellValueFactory(new PropertyValueFactory<>("YHTRQ__O"));
+                    ((TableColumn) tableView.getColumns().get(13)).setCellFactory(TextFieldTableCell.forTableColumn());
+                    ((TableColumn) tableView.getColumns().get(14)).setCellValueFactory(new PropertyValueFactory<>("YHTLS__O"));
+                    ((TableColumn) tableView.getColumns().get(14)).setCellFactory(TextFieldTableCell.forTableColumn());
 
                     tableView.setItems(data);
 
                     tableView.setFixedCellSize(25);
-                    tableView.prefHeightProperty().bind(Bindings.size(tableView.getItems()).multiply(tableView.getFixedCellSize()+1).add(30));
-
+                    tableView.prefHeightProperty().bind(Bindings.size(tableView.getItems()).multiply(tableView.getFixedCellSize() + 1).add(30));
 
 
                 }
@@ -202,6 +263,27 @@ public class QueryStatement implements Initializable {
 
         t.getTableColumn().getProperties().put("StringProperty", t.getOldValue());
         t.getTableView().refresh();
+    }
+
+    @FXML
+    public void selectAll() {
+        if (cb_all.isSelected()) {
+            cb_1.setSelected(true);
+            cb_w.setSelected(true);
+            cb_c.setSelected(true);
+            cb_t.setSelected(true);
+            cb_b.setSelected(true);
+            cb_u.setSelected(true);
+        } else {
+            cb_1.setSelected(false);
+            cb_w.setSelected(false);
+            cb_c.setSelected(false);
+            cb_t.setSelected(false);
+            cb_b.setSelected(false);
+            cb_u.setSelected(false);
+        }
+
+
     }
 
 
@@ -361,6 +443,38 @@ public class QueryStatement implements Initializable {
             this.JYZT_U_O.set(JYZT_U_O);
         }
 
+        public String getXH_UUU_O() {
+            return XH_UUU_O.get();
+        }
+
+        public SimpleStringProperty XH_UUU_OProperty() {
+            return XH_UUU_O;
+        }
+
+        public String getYTHJE__O() {
+            return YTHJE__O.get();
+        }
+
+        public SimpleStringProperty YTHJE__OProperty() {
+            return YTHJE__O;
+        }
+
+        public String getYHTRQ__O() {
+            return YHTRQ__O.get();
+        }
+
+        public SimpleStringProperty YHTRQ__OProperty() {
+            return YHTRQ__O;
+        }
+
+        public String getYHTLS__O() {
+            return YHTLS__O.get();
+        }
+
+        public SimpleStringProperty YHTLS__OProperty() {
+            return YHTLS__O;
+        }
+
         private final SimpleStringProperty XH_UUU_O;
         private final SimpleStringProperty HTRQ_U_O;
         private final SimpleStringProperty HTSJ_U_O;
@@ -373,8 +487,11 @@ public class QueryStatement implements Initializable {
         private final SimpleStringProperty SPXX_U_O;
         private final SimpleStringProperty FKM_UU_O;
         private final SimpleStringProperty JYZT_U_O;
+        private final SimpleStringProperty YTHJE__O;
+        private final SimpleStringProperty YHTRQ__O;
+        private final SimpleStringProperty YHTLS__O;
 
-        public tableInfo(String xh_uuu_o, String htrq_u_o, String htsj_u_o, String htls_u_o, String htjym__o, String zfzhlx_o, String jyje_u_o, String shbh_u_o, String czzh_u_o, String spxx_u_o, String fkm_uu_o, String jyzt_u_o) {
+        public tableInfo(String xh_uuu_o, String htrq_u_o, String htsj_u_o, String htls_u_o, String htjym__o, String zfzhlx_o, String jyje_u_o, String shbh_u_o, String czzh_u_o, String spxx_u_o, String fkm_uu_o, String jyzt_u_o, String ythje__o, String yhtrq__o, String yhtls__o) {
             XH_UUU_O = new SimpleStringProperty(xh_uuu_o);
             HTRQ_U_O = new SimpleStringProperty(htrq_u_o);
             HTSJ_U_O = new SimpleStringProperty(htsj_u_o);
@@ -387,15 +504,12 @@ public class QueryStatement implements Initializable {
             SPXX_U_O = new SimpleStringProperty(spxx_u_o);
             FKM_UU_O = new SimpleStringProperty(fkm_uu_o);
             JYZT_U_O = new SimpleStringProperty(jyzt_u_o);
+            YTHJE__O = new SimpleStringProperty(ythje__o);
+            YHTRQ__O = new SimpleStringProperty(yhtrq__o);
+            YHTLS__O = new SimpleStringProperty(yhtls__o);
         }
 
-        public String getXH_UUU_O() {
-            return XH_UUU_O.get();
-        }
 
-        public SimpleStringProperty XH_UUU_OProperty() {
-            return XH_UUU_O;
-        }
     }
 
 

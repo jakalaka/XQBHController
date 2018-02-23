@@ -2,6 +2,7 @@ package XQBHController.ControllerAPI.Com;
 
 import XQBHController.Controller.Com;
 import XQBHController.Controller.ComCall;
+import XQBHController.Utils.Data.DataUtils;
 import XQBHController.Utils.log.Logger;
 
 import java.util.HashMap;
@@ -44,7 +45,7 @@ public class SHLogin {
 
         for (Map map:listZDLIST)
         {
-            System.out.println("ZDBH_U="+map.get("ZDBH_U")+" IP="+map.get("IP_UUU"));
+            System.out.println("ZDBH_U="+ DataUtils.getValue(map,"ZDBH_U")+" IP="+DataUtils.getValue(map,"IP_UUU"));
             Com.listSH_ZDXX.add(map);
         }
 

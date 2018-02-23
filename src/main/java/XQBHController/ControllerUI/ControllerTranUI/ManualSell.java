@@ -55,7 +55,7 @@ public class ManualSell implements Initializable {
             if (!initFlg) {
                 for (Map map :
                         Com.listSH_ZDXX) {
-                    String sZDBH_U = map.get("ZDBH_U").toString();
+                    String sZDBH_U = DataUtils.getValue(map,"ZDBH_U");
                     DataModel dataModel = GetLastModelFromZD.exec(sZDBH_U);
                     if (dataModel == null) {
                         Logger.log("LOG_DEBUG", sZDBH_U + "'s model is null");
@@ -72,8 +72,8 @@ public class ManualSell implements Initializable {
 
                 for (Map map :
                         Com.listSH_ZDXX) {
-                    ZDBH_U_I.getItems().add(map.get("ZDBH_U"));
-                    Logger.log("LOG_DEBUG", "ZDBH_U_I ADD " + map.get("ZDBH_U"));
+                    ZDBH_U_I.getItems().add(DataUtils.getValue(map,"ZDBH_U"));
+                    Logger.log("LOG_DEBUG", "ZDBH_U_I ADD " + DataUtils.getValue(map,"ZDBH_U"));
                 }
                 ZDBH_U_I.setValue(ZDBH_U_I.getItems().get(0));
 
@@ -107,8 +107,8 @@ public class ManualSell implements Initializable {
                     String sIP = "";
                     for (Map map :
                             Com.listSH_ZDXX) {
-                        if (sZDBH_U.equals(map.get("ZDBH_U"))) {
-                            sIP = map.get("IP_UUU").toString();
+                        if (sZDBH_U.equals(DataUtils.getValue(map,"ZDBH_U"))) {
+                            sIP = DataUtils.getValue(map,"IP_UUU");
                             break;
                         }
                     }
@@ -151,8 +151,8 @@ public class ManualSell implements Initializable {
                     String sIP = "";
                     for (Map map :
                             Com.listSH_ZDXX) {
-                        if (sZDBH_U.equals(map.get("ZDBH_U"))) {
-                            sIP = map.get("IP_UUU").toString();
+                        if (sZDBH_U.equals(DataUtils.getValue(map,"ZDBH_U"))) {
+                            sIP = DataUtils.getValue(map,"IP_UUU");
                             break;
                         }
                     }

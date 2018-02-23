@@ -2,6 +2,7 @@ package XQBHController.ControllerAPI.Com;
 
 import XQBHController.Controller.Com;
 import XQBHController.ControllerAPI.UI.WarmingDialog;
+import XQBHController.Utils.Data.DataUtils;
 import XQBHController.Utils.Model.DataModel;
 import XQBHController.Utils.XML.XmlUtils;
 import XQBHController.Utils.log.Logger;
@@ -21,8 +22,8 @@ public class GetZDModel {
         int iPort=0;
         for (Map map :
                 Com.listSH_ZDXX) {
-            if (sZDBH_U.equals(map.get("ZDBH_U"))) {
-                sIP = map.get("IP_UUU").toString();
+            if (sZDBH_U.equals(DataUtils.getValue(map,"ZDBH_U"))) {
+                sIP = DataUtils.getValue(map,"IP_UUU");
                 break;
             }
         }
@@ -70,9 +71,9 @@ public class GetZDModel {
         Logger.log("LOG_DEBUG","info="+info);
         Map map = XmlUtils.XML2map(info);
 //        System.out.println(map.get("MODEL"));
-        Logger.log("LOG_DEBUG", "get Model=" + map.get("MODEL"));
+        Logger.log("LOG_DEBUG", "get Model=" + DataUtils.getValue(map,"MODEL"));
         Gson gson = new Gson();
-        String gsonstr=map.get("MODEL").toString();
+        String gsonstr=DataUtils.getValue(map,"MODEL");
         DataModel dataModel = gson.fromJson(gsonstr, DataModel.class);
         Logger.log("LOG_DEBUG", "get Model info finish!!!");
         return dataModel;

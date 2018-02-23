@@ -138,6 +138,7 @@ public class QueryTran implements Initializable {
                     DataUtils.setValue(root, "SPXX_U_O", DataUtils.getValue(Out, "SPXX_U"));
                     DataUtils.setValue(root, "FKM_UU_O", DataUtils.getValue(Out, "FKM_UU"));
                     DataUtils.setValue(root, "JYZT_U_O", DataUtils.getListMean("JYZT_U", DataUtils.getValue(Out, "JYZT_U")));
+
                 }
 
 
@@ -164,11 +165,18 @@ public class QueryTran implements Initializable {
                 if ("refund".equals(((Button) eventObj).getId()))//退货按钮
                 {
                     Logger.log("LOG_DEBUG", "click refund");
-                    String resoult = ComRefund.exec(DataUtils.getValue(root, "HTRQ_U_O"), DataUtils.getValue(root, "HTLS_U_O"), DataUtils.getValue(root, "JYJE_U_O"));
-                    if (!"SUCEESS".equals(resoult)) {
+                    String resoult = ComRefund.exec(DataUtils.getListValue("ZFZHLX",DataUtils.getValue(root,"ZFZHLX_O")),DataUtils.getValue(root, "HTRQ_U_O"), DataUtils.getValue(root, "HTLS_U_O"), DataUtils.getValue(root, "JYJE_U_O"));
+                    if (!"SUCCESS".equals(resoult)) {
                         WarmingDialog.show(WarmingDialog.Dialog_ERR, resoult);
                     }else {
                         Logger.log("LOG_DEBUG","refund success");
+                        WarmingDialog.show(WarmingDialog.Dialog_OVER,"后台日期=["+DataUtils.getValue(root, "HTRQ_U_O")+"]" +
+                                "\n后台流水["+DataUtils.getValue(root, "HTLS_U_O")+"]"+
+                                "\n商品名称[" +DataUtils.getValue(root, "SPXX_U_O")+"]"+
+                                "\n退货金额[" +DataUtils.getValue(root, "JYJE_U_O")+"]"+
+                                "\n第三方单号[" +DataUtils.getValue(root, "SFDH_U_O")+"]"+
+                                "\n退货成功!!!"
+                        );
                     }
 
 
@@ -208,6 +216,7 @@ public class QueryTran implements Initializable {
         DataUtils.setValue(root, "SPXX_U_O", "");
         DataUtils.setValue(root, "FKM_UU_O", "");
         DataUtils.setValue(root, "JYZT_U_O", "");
+
     }
 
 

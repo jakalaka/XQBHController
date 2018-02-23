@@ -1,6 +1,7 @@
 package XQBHController.ControllerAPI.Com;
 
 import XQBHController.Controller.Com;
+import XQBHController.Utils.Data.DataUtils;
 import XQBHController.Utils.XML.XmlUtils;
 import XQBHController.Utils.log.Logger;
 
@@ -16,9 +17,9 @@ public class UpdateClientStock {
         int iPort=0;
         for (Map map:
                 Com.listSH_ZDXX) {
-            String sZDBH_U=map.get("ZDBH_U").toString();
+            String sZDBH_U= DataUtils.getValue(map,"ZDBH_U");
             if (sZDBH_U.equals(ZDBH_U)) {
-                sIP = map.get("IP_UUU").toString();
+                sIP = DataUtils.getValue(map,"IP_UUU");
                 break;
             }
         }
