@@ -22,7 +22,8 @@ public class FTPControllerUtil {
     private static FTPClient ftp = null;
 
     public static void main(String[] args) {
-        FTPControllerUtil FTPClient = new FTPControllerUtil("119.23.250.79", 21, "ftpreader", "ftp", "Update", "version.txt", "Update/new", "version.txt");
+        FTPControllerUtil FTPClient = new FTPControllerUtil(Const.hostName, Const.port, Const.user, Const.pwd, Const.RemotePath, "version.txt", Const.LocalPath, "version.txt");
+
         try {
             FTPClient.FTPClientRun();
         } catch (Exception e) {
@@ -78,6 +79,7 @@ public class FTPControllerUtil {
             localFile.mkdirs();
         }
         FileOutputStream out = new FileOutputStream(localPath+"/"+localFileName);
+        ftp.enterLocalPassiveMode();
         ftp.retrieveFile(remotePath+"/"+remoteFileName, out);
         out.flush();
         out.close();

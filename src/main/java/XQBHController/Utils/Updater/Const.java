@@ -9,7 +9,9 @@ public class Const {
 	public static final String user = "ftpreader";
 	public static final String pwd = "ftp";
 	
-	public static final String RemotePath = "Update";
+	public static final String RemotePath = "Update/XQBHController";
 	public static final String LocalPath = "Update/new";
 	public static final String LocalOld = "Update";
+	public static final String version="ver1.0";
+
 }
